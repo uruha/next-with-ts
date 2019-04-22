@@ -1,0 +1,25 @@
+{
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "project": "./tsconfig.json",
+        "tsconfigRootDir": "."
+    },
+    "plugins": [
+        "@typescript-eslint",
+        "react",
+        "prettier"
+    ],
+    "env": {
+        "es6": true,
+        "browser": true
+    },
+    "extends": [
+        "plugin:@typescript-eslint/recommended",
+        "prettier",
+        "prettier/@typescript-eslint"
+    ],
+    "rules": {
+        "prettier/prettier": "error",
+        "@typescript-eslint/explicit-function-return-type": [0, { "allowExpressions": true }]
+    }
+}
