@@ -1,0 +1,6 @@
+{
+    "watch": ["sever/**/*.ts"],
+    "execMap": {
+        "ts": "ts-node -O '{\"module\":\"commonjs\"}'"
+    }
+}
