@@ -4,7 +4,7 @@
   "description": "next.js with typescript boiler plate",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "git@github.com:uruha/next-with-ts.git"
   },
   "main": "index.js",
   "scripts": {
