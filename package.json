@@ -1,0 +1,15 @@
+{
+  "name": "next-with-ts",
+  "version": "0.1.0",
+  "description": "next.js with typescript boiler plate",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "next.js",
+    "typescript"
+  ],
+  "author": "Kotaro Chiba",
+  "license": "MIT"
+}
