@@ -1,4 +1,4 @@
-import next from 'next';
+import { NextComponentType, NextContext } from 'next';
 import App, { Container } from 'next/app';
 
 class CustomApp extends App {
@@ -6,8 +6,8 @@ class CustomApp extends App {
         Component,
         ctx
     }: {
-        Component: next.NextComponentType;
-        ctx: next.NextContext;
+        Component: NextComponentType;
+        ctx: NextContext;
     }) {
         let pageProps = {};
 
