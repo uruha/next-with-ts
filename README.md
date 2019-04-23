@@ -15,3 +15,5 @@ next.js with typescript boiler plate.
     - lint-staged
 - language
     - typescript
+- logging
+    - bunyan
