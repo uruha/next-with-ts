@@ -13,7 +13,7 @@ const logOptions: Logger.LoggerOptions = {
         },
         {
             level: 'error',
-            stream: process.stdout
+            stream: process.stderr
         }
     ],
     serializers: {
@@ -44,7 +44,7 @@ app.prepare()
         });
 
         router.get('*', async ctx => {
-            await ctx.logger.info({ req: ctx.req });
+            await ctx.logger.info({ req: ctx.req }, 'REQUEST');
             await handle(ctx.req, ctx.res);
             ctx.respond = false;
         });
@@ -59,4 +59,4 @@ app.prepare()
             logger.info(`> Ready on localhost:${port}`);
         });
     })
-    .catch(err => logger.error(err));
+    .catch(err => logger.error(err, 'Server prepared is faild.'));
