@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { NextComponentType, NextContext } from 'next';
 import App, { Container } from 'next/app';
 
