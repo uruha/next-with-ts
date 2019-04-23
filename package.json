@@ -29,6 +29,7 @@
     "license": "MIT",
     "dependencies": {
         "@zeit/next-typescript": "^1.1.1",
+        "bunyan": "^1.8.12",
         "koa": "^2.7.0",
         "koa-router": "^7.4.0",
         "next": "^8.1.0",
@@ -38,6 +39,7 @@
         "typescript": "^3.4.4"
     },
     "devDependencies": {
+        "@types/bunyan": "^1.8.6",
         "@types/koa": "^2.0.48",
         "@types/koa-router": "^7.0.40",
         "@types/next": "^8.0.3",

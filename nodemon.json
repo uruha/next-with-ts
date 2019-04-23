@@ -1,5 +1,5 @@
 {
-    "watch": ["sever/**/*.ts"],
+    "watch": ["server/**/*.ts"],
     "execMap": {
         "ts": "ts-node -O '{\"module\":\"commonjs\"}'"
     }
