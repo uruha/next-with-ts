@@ -20,8 +20,11 @@
         "sourceMap": true,
         "strict": true,
         "target": "esnext",
-        "rootDir": ".",
-        "baseUrl": ".",
+        "baseUrl": "./",
+        "paths": {
+            "~/*": ["src/*"]
+        },
+        "rootDirs": ["./pages", "./src"],
         "typeRoots": [
             "node_modules/@types",
             "./types"
