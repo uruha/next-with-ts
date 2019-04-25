@@ -1,8 +1,4 @@
 {
-    "presets": [
-        "next/babel",
-        "@zeit/next-typescript/babel"
-    ],
     "plugins": [
         [
             "module-resolver", {
@@ -11,5 +7,25 @@
                 }
             }
         ]
-    ]
+    ],
+    "env": {
+        "development": {
+            "presets": [
+                "next/babel",
+                "@zeit/next-typescript/babel"
+            ]
+        },
+        "production": {
+            "presets": [
+                "next/babel",
+                "@zeit/next-typescript/babel"
+            ]
+        },
+        "test": {
+            "presets": [
+                "next/babel",
+                "@zeit/next-typescript/babel"
+            ]
+        }
+    }
 }

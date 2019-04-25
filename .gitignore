@@ -17,3 +17,6 @@ Thumbs.db
 
 # VS code
 .vscode
+
+# jest
+coverage
