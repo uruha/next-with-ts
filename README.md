@@ -17,3 +17,6 @@ next.js with typescript boiler plate.
     - typescript
 - logging
     - bunyan
+- unit test
+    - jest
+    - enzyme
