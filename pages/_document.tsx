@@ -17,11 +17,6 @@ class CustomDocument extends Document {
         return (
             <Html>
                 <Head>
-                    <meta charSet="utf-8" />
-                    <meta
-                        name="viewport"
-                        content="width=device-width, initial-scale=1.0"
-                    />
                     <style>{`
                         body { margin: 0 }
                         h1, h2, h3, h4, h5, h6 { margin: 0; padding: 0; }
