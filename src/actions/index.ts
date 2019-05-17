@@ -1,12 +1,14 @@
 import { INCREMENT, DECREMENT } from '../constant';
 import { CounterActionTypes } from '../actionTypes';
 
-export const increment = (number: number): CounterActionTypes => ({
+const increment = (number: number): CounterActionTypes => ({
     type: INCREMENT,
     payload: number
 });
 
-export const decrement = (number: number): CounterActionTypes => ({
+const decrement = (number: number): CounterActionTypes => ({
     type: DECREMENT,
     payload: number
 });
+
+export const counterActions = { increment, decrement };

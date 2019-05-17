@@ -51,6 +51,7 @@
         "@types/koa": "^2.0.48",
         "@types/koa-router": "^7.0.40",
         "@types/next": "^8.0.4",
+        "@types/next-redux-wrapper": "^2.0.2",
         "@types/react": "^16.8.14",
         "@types/react-dom": "^16.8.4",
         "@types/react-redux": "^7.0.9",
