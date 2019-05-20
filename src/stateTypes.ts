@@ -3,5 +3,5 @@ export interface CountState {
 }
 
 export interface RootState {
-    counter?: CountState;
+    counter: CountState;
 }

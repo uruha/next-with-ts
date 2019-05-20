@@ -4,7 +4,7 @@ import reducers from '../reducers';
 
 import { RootState } from '~/stateTypes';
 
-export default (initialState: RootState = {}) => {
+export default (initialState: RootState) => {
     const middlewares = [];
 
     const logger = createLogger();

@@ -8,7 +8,7 @@ import { counterActions } from '~/actions';
 import { RootState, CountState } from '~/stateTypes';
 
 interface IndexProps {
-    counter?: CountState;
+    counter: CountState;
     actions: typeof counterActions;
 }
 
