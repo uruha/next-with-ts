@@ -4,10 +4,15 @@ import App, { Container } from 'next/app';
 
 import withRedux from 'next-redux-wrapper';
 import { Provider } from 'react-redux';
-import store from '~/store';
+import makeStore from '~/store';
 import { Store } from 'redux';
+import { RootState } from '~/reducers';
 
-class CustomApp extends App<{ store: Store }> {
+interface CustomProps {
+    store: Store<RootState>;
+}
+
+class CustomApp extends App<CustomProps> {
     static async getInitialProps({
         Component,
         ctx
@@ -37,4 +42,8 @@ class CustomApp extends App<{ store: Store }> {
     }
 }
 
-export default withRedux(store)(CustomApp);
+/**
+ * @NOTE
+ * makeStore type is `(initialSa)`
+ */
+export default withRedux<any>(makeStore)(CustomApp);

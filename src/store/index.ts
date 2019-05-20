@@ -1,20 +1,16 @@
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, Store } from 'redux';
 import { createLogger } from 'redux-logger';
-import reducers from '../reducers';
+import { rootReducer, RootState } from '../reducers';
 
-import { RootState } from '~/stateTypes';
-
-export default (initialState: RootState) => {
+export default (initialState: RootState): Store<RootState> => {
     const middlewares = [];
 
     const logger = createLogger();
     middlewares.push(logger);
 
-    const store = createStore(
-        reducers,
+    return createStore(
+        rootReducer,
         initialState,
         applyMiddleware(...middlewares)
     );
-
-    return store;
 };

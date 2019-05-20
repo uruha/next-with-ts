@@ -4,8 +4,9 @@ import Layout from '~/components/Layout';
 import { bindActionCreators, Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { counterActions } from '~/actions';
+import { RootState } from '~/reducers';
 
-import { RootState, CountState } from '~/stateTypes';
+import { CountState } from '~/stateTypes';
 
 interface IndexProps {
     counter: CountState;
