@@ -1,4 +1,4 @@
-import { INCREMENT, DECREMENT } from './constant';
+import { INCREMENT, DECREMENT } from '~/constant';
 
 interface IncrementAction {
     type: typeof INCREMENT;
