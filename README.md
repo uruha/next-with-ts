@@ -4,6 +4,8 @@ next.js with typescript boiler plate.
 ## spec
 - application
     - next.js
+- flux
+    - redux
 - web server
     - koa.js
 - linter
