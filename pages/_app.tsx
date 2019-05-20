@@ -2,7 +2,17 @@ import * as React from 'react';
 import { NextComponentType, NextContext } from 'next';
 import App, { Container } from 'next/app';
 
-class CustomApp extends App {
+import withRedux from 'next-redux-wrapper';
+import { Provider } from 'react-redux';
+import makeStore from '~/store';
+import { Store } from 'redux';
+import { RootState } from '~/reducers';
+
+interface CustomProps {
+    store: Store<RootState>;
+}
+
+class CustomApp extends App<CustomProps> {
     static async getInitialProps({
         Component,
         ctx
@@ -20,14 +30,22 @@ class CustomApp extends App {
     }
 
     render() {
-        const { Component, pageProps } = this.props;
+        const { Component, pageProps, store } = this.props;
 
         return (
             <Container>
-                <Component {...pageProps} />
+                <Provider store={store}>
+                    <Component {...pageProps} />
+                </Provider>
             </Container>
         );
     }
 }
 
-export default CustomApp;
+/**
+ * @NOTE
+ * makeStore type is `(initialState: RootState) => Store<RootState, AnyAction>`.
+ * But withRedux accepted argument type is only ReturnType<typeof makeStore>.
+ * I temporarily respond with Redux TInitialState type is <any>.
+ */
+export default withRedux<any>(makeStore)(CustomApp);
