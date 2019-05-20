@@ -44,6 +44,8 @@ class CustomApp extends App<CustomProps> {
 
 /**
  * @NOTE
- * makeStore type is `(initialSa)`
+ * makeStore type is `(initialState: { counter: CountState }) => Store<{ counter: CountState }, AnyAction>`.
+ * But withRedux accepted argument type is only ReturnType<typeof makeStore>.
+ * I temporarily respond with Redux TInitialState type is <any>.
  */
 export default withRedux<any>(makeStore)(CustomApp);
