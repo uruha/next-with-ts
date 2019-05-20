@@ -1,5 +1,5 @@
-import { INCREMENT, DECREMENT } from '../constant';
-import { CounterActionTypes } from '../actionTypes';
+import { INCREMENT, DECREMENT } from '~/constant';
+import { CounterActionTypes } from '~/actionTypes';
 
 const increment = (number: number): CounterActionTypes => ({
     type: INCREMENT,
