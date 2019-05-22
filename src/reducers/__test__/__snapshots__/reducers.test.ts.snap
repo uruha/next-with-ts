@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Counter reducer increment testing 1`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+  Object {
+-   \\"count\\": 0,
++   \\"count\\": 1,
+  }"
+`;
+
+exports[`Counter reducer increment testing 2`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+  Object {
+-   \\"count\\": 0,
++   \\"count\\": -1,
+  }"
+`;
