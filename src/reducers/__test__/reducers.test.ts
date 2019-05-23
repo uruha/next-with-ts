@@ -1,5 +1,5 @@
 /* eslint-env jest */
-import snapshotDiff from 'snapshot-diff';
+import * as snapshotDiff from 'snapshot-diff';
 import { counterActions } from '../../actions';
 
 import { counter, initialState } from '../';

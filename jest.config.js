@@ -4,12 +4,23 @@ module.exports = {
     setupFiles: ['<rootDir>/jest.setup.js'],
     testRegex: TEST_REGEX,
     transform: {
-        '^.+\\.tsx?$': 'babel-jest'
+        '^.+\\.tsx?$': 'ts-jest'
     },
-    testPathIgnorePatterns: ['<rootDir>/.next/', '<rootDir>/node_modules/'],
+    testPathIgnorePatterns: [
+        '<rootDir>/.next/',
+        '<rootDir>/out/',
+        '<rootDir>/node_modules/'
+    ],
     moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
     collectCoverage: true,
     moduleNameMapper: {
-        "^~/(.+)": "<rootDir>/src/components/$1"
+        '^~\/(.*)$': '<rootDir>/src/$1',
+        '^~pages\/(.*)$': '<rootDir>/pages/$1'
+    },
+    globals: {
+        'ts-jest': {
+            'babelConfig': true,
+            'tsConfig': 'jest.tsconfig.json'
+        }
     }
 };
