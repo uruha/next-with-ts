@@ -1,11 +1,13 @@
-import { combineReducers, Reducer } from 'redux';
+import { combineReducers } from 'redux';
 
 import { INCREMENT, DECREMENT } from '~/constant';
 import { CounterActionTypes } from '~/actionTypes';
 import { CountState } from '~/stateTypes';
 
-const counter: Reducer<CountState, CounterActionTypes> = (
-    state: CountState = { count: 0 },
+export const initialState: CountState = { count: 0 };
+
+export const counter = (
+    state = initialState,
     action: CounterActionTypes
 ): CountState => {
     switch (action.type) {
