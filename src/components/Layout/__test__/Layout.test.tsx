@@ -2,8 +2,8 @@
 import * as React from 'react';
 import { shallow } from 'enzyme';
 
-import Layout from '../index';
-import Nav from '../../Nav';
+import Layout from '~/components/Layout';
+import Nav from '~/components/Nav';
 
 describe('Layout', () => {
     it('render title', () => {

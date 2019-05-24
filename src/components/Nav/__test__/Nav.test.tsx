@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { shallow } from 'enzyme';
 
-import Nav from '../index';
+import Nav from '~/components/Nav';
 
 describe('Navigation', () => {
     it('renders navigation list itmes collection', () => {
