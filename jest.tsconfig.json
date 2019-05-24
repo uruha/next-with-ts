@@ -19,7 +19,8 @@
         "target": "esnext",
         "baseUrl": "./",
         "paths": {
-            "~/*": ["src/*"]
+            "~/*": ["src/*"],
+            "~pages/*": ["pages/*"]
         },
         "rootDirs": ["./pages", "./src"],
         "typeRoots": [

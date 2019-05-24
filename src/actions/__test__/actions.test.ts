@@ -1,6 +1,6 @@
 /* eslint-env jest */
-import { INCREMENT, DECREMENT } from '../../constant';
-import { counterActions } from '../index';
+import { INCREMENT, DECREMENT } from '~/constant';
+import { counterActions } from '~/actions';
 
 describe('Counter actions', () => {
     it('should create increment action', () => {

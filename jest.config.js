@@ -14,8 +14,8 @@ module.exports = {
     moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
     collectCoverage: true,
     moduleNameMapper: {
-        '^~\/(.*)$': '<rootDir>/src/$1',
-        '^~pages\/(.*)$': '<rootDir>/pages/$1'
+        '^~/(.*)$': '<rootDir>/src/$1',
+        '^~pages/(.*)$': '<rootDir>/pages/$1'
     },
     globals: {
         'ts-jest': {
