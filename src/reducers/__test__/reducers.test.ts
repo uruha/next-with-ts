@@ -5,20 +5,11 @@ import { counterActions } from '~/actions';
 import { counter, initialState } from '~/reducers';
 
 describe('Counter reducer', () => {
-    it('increment testing', () => {
+    it('update testing', () => {
         expect(
             snapshotDiff(
                 initialState,
-                counter(initialState, counterActions.increment(1))
-            )
-        ).toMatchSnapshot();
-    });
-
-    it('increment testing', () => {
-        expect(
-            snapshotDiff(
-                initialState,
-                counter(initialState, counterActions.decrement(1))
+                counter(initialState, counterActions.updateCount(1))
             )
         ).toMatchSnapshot();
     });

@@ -1,4 +1,4 @@
-import { INCREMENT, DECREMENT } from '~/constant';
+import { INCREMENT, DECREMENT, UPDATE_COUNT } from '~/constant';
 
 interface IncrementAction {
     type: typeof INCREMENT;
@@ -10,4 +10,12 @@ interface DecrementAction {
     payload: number;
 }
 
-export type CounterActionTypes = IncrementAction | DecrementAction;
+interface UpdateCountAction {
+    type: typeof UPDATE_COUNT;
+    payload: number;
+}
+
+export type CounterActionTypes =
+    | IncrementAction
+    | DecrementAction
+    | UpdateCountAction;

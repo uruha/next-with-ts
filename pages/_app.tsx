@@ -5,11 +5,10 @@ import App, { Container } from 'next/app';
 import withRedux from 'next-redux-wrapper';
 import { Provider } from 'react-redux';
 import makeStore from '~/store';
-import { Store } from 'redux';
-import { RootState } from '~/reducers';
+import { StoreWithSaga } from '~/store';
 
 interface CustomProps {
-    store: Store<RootState>;
+    store: StoreWithSaga;
 }
 
 class CustomApp extends App<CustomProps> {
