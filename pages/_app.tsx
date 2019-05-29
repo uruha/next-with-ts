@@ -7,8 +7,11 @@ import { Provider } from 'react-redux';
 import makeStore from '~/store';
 import { StoreWithSaga } from '~/store';
 
+import { increment } from '~/actions';
+
 interface CustomProps {
     store: StoreWithSaga;
+    isServer: boolean;
 }
 
 class CustomApp extends App<CustomProps> {
@@ -20,6 +23,9 @@ class CustomApp extends App<CustomProps> {
         ctx: NextContext;
     }) {
         let pageProps = {};
+
+        /** @TODO type error */
+        await ctx.store.dispatch(increment(1));
 
         if (Component.getInitialProps) {
             pageProps = await Component.getInitialProps(ctx);
