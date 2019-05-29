@@ -58,7 +58,6 @@
         "@types/react-dom": "^16.8.4",
         "@types/react-redux": "^7.0.9",
         "@types/redux-logger": "^3.0.7",
-        "@types/redux-saga": "^0.10.5",
         "@typescript-eslint/eslint-plugin": "^1.7.0",
         "@typescript-eslint/parser": "^1.7.0",
         "@typescript-eslint/typescript-estree": "^1.7.0",
