@@ -11,8 +11,8 @@ export interface SagaTask extends Task {
 export interface StoreWithSaga extends Store<RootState> {
     sagaTask: SagaTask | null;
     runSagaTask: () => void;
-    stopSaga: () => Promise<any>;
-    execSagaTask: (isServer: boolean, tasks: any) => Promise<any>;
+    stopSaga: () => Promise<void>;
+    execSagaTask: (isServer: boolean, tasks: any) => Promise<void>;
 }
 
 export default (initialState: RootState) => {
