@@ -41,6 +41,7 @@
         "react-redux": "^7.0.3",
         "redux": "^4.0.1",
         "redux-logger": "^3.0.6",
+        "redux-saga": "^1.0.2",
         "ts-node": "^8.1.0",
         "typescript": "^3.4.5"
     },

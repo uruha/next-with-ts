@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-import { INCREMENT, DECREMENT } from '~/constant';
+import { UPDATE_COUNT } from '~/constant';
 import { CounterActionTypes } from '~/actionTypes';
 import { CountState } from '~/stateTypes';
 
@@ -11,13 +11,9 @@ export const counter = (
     action: CounterActionTypes
 ): CountState => {
     switch (action.type) {
-        case INCREMENT:
+        case UPDATE_COUNT:
             return Object.assign({}, state, {
-                count: state.count + action.payload
-            });
-        case DECREMENT:
-            return Object.assign({}, state, {
-                count: state.count - action.payload
+                count: action.payload
             });
         default:
             return state;
