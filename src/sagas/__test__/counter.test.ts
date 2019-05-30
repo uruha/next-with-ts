@@ -1,4 +1,6 @@
 import { expectSaga } from 'redux-saga-test-plan';
+import { counterActions } from '~/actions';
+
 import {
     handleRequestIncrementCount,
     handleRequestDecrementCount
@@ -8,16 +10,16 @@ describe('Counter tasks', () => {
     it('increment task', () => {
         return expectSaga(handleRequestIncrementCount)
             .withState({ counter: { count: 0 } })
-            .dispatch({ type: 'INCREMENT', payload: 1 })
-            .put({ type: 'UPDATE_COUNT', payload: 1 })
+            .dispatch(counterActions.increment(1))
+            .put(counterActions.updateCount(1))
             .run();
     });
 
     it('decrement task', () => {
         return expectSaga(handleRequestDecrementCount)
             .withState({ counter: { count: 1 } })
-            .dispatch({ type: 'DECREMENT', payload: 1 })
-            .put({ type: 'UPDATE_COUNT', payload: 0 })
+            .dispatch(counterActions.decrement(1))
+            .put(counterActions.updateCount(0))
             .run();
     });
 });

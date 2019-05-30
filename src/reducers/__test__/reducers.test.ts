@@ -2,14 +2,14 @@
 import * as snapshotDiff from 'snapshot-diff';
 import { counterActions } from '~/actions';
 
-import { counter, initialState } from '~/reducers';
+import { counter, initialCounter } from '~/reducers';
 
 describe('Counter reducer', () => {
     it('update testing', () => {
         expect(
             snapshotDiff(
-                initialState,
-                counter(initialState, counterActions.updateCount(1))
+                initialCounter,
+                counter(initialCounter, counterActions.updateCount(1))
             )
         ).toMatchSnapshot();
     });

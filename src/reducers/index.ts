@@ -4,10 +4,10 @@ import { UPDATE_COUNT } from '~/constant';
 import { CounterActionTypes } from '~/actionTypes';
 import { CountState } from '~/stateTypes';
 
-export const initialState: CountState = { count: 0 };
+export const initialCounter: CountState = { count: 0 };
 
 export const counter = (
-    state = initialState,
+    state = initialCounter,
     action: CounterActionTypes
 ): CountState => {
     switch (action.type) {
