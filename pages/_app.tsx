@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { NextComponentType } from 'next';
-import App, { AppProps, Container } from 'next/app';
+import App, { AppProps } from 'next/app';
 
 import { Dispatch } from 'redux';
 import withRedux from 'next-redux-wrapper';
@@ -46,11 +46,9 @@ class CustomApp extends App<CustomProps & AppProps> {
         const { Component, pageProps, store } = this.props;
 
         return (
-            <Container>
-                <Provider store={store}>
-                    <Component {...pageProps} />
-                </Provider>
-            </Container>
+            <Provider store={store}>
+                <Component {...pageProps} />
+            </Provider>
         );
     }
 }

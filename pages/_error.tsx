@@ -1,13 +1,6 @@
 import * as React from 'react';
 import { NextPageContext } from 'next';
 
-/**
- * @NOTE
- * `@types/next/error`'s getInitialProps type is different from `@types/next/app`.
- * I suggest that
- * getInitialProps is not `static getInitialProps: GetInitialProps<DefaultErrorIProps, NextContext>`,
- * `static getInitialProps(context: DefaultErrorIProps & NextContext): Promise<DefaultErrorIProps & NextContext>` is correct ?
- */
 interface ErrorProps {
     statusCode?: number;
 }
