@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { NextComponentType } from 'next';
-import App, { AppProps, Container, DefaultAppIProps } from 'next/app';
+import App, { AppProps, Container } from 'next/app';
 
 import { Dispatch } from 'redux';
 import withRedux from 'next-redux-wrapper';
@@ -15,7 +15,7 @@ interface CustomProps {
     isServer: boolean;
 }
 
-class CustomApp extends App<CustomProps & DefaultAppIProps & AppProps> {
+class CustomApp extends App<CustomProps & AppProps> {
     static async getInitialProps({
         Component,
         ctx
@@ -61,4 +61,4 @@ class CustomApp extends App<CustomProps & DefaultAppIProps & AppProps> {
  * But withRedux accepted argument type is only ReturnType<typeof makeStore>.
  * I temporarily respond with Redux TInitialState type is <any>.
  */
-export default withRedux<any>(makeStore)(CustomApp);
+export default withRedux(makeStore)(CustomApp);

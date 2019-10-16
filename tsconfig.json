@@ -1,36 +1,50 @@
 {
-    "compilerOptions": {
-        "allowJs": true,
-        "allowSyntheticDefaultImports": true,
-        "jsx": "preserve",
-        "lib": [
-            "dom",
-            "es2017"
-        ],
-        "module": "esnext",
-        "moduleResolution": "node",
-        "noEmit": true,
-        "noUnusedLocals": true,
-        "noUnusedParameters": true,
-        "preserveConstEnums": true,
-        "removeComments": false,
-        "skipLibCheck": true,
-        "sourceMap": true,
-        "strict": true,
-        "target": "esnext",
-        "baseUrl": "./",
-        "paths": {
-            "~/*": ["src/*"]
-        },
-        "rootDirs": ["./pages", "./src"],
-        "typeRoots": [
-            "node_modules/@types",
-            "./types"
-        ]
+  "compilerOptions": {
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "jsx": "preserve",
+    "lib": [
+      "dom",
+      "es2017"
+    ],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noEmit": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "preserveConstEnums": true,
+    "removeComments": false,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "strict": true,
+    "target": "esnext",
+    "baseUrl": "./",
+    "paths": {
+      "~/*": [
+        "src/*"
+      ]
     },
-    "exclude": [
-        "node_modules",
-        "out",
-        ".next"
-    ]
+    "rootDirs": [
+      "./pages",
+      "./src"
+    ],
+    "typeRoots": [
+      "node_modules/@types",
+      "./types"
+    ],
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules",
+    "out",
+    ".next"
+  ]
 }

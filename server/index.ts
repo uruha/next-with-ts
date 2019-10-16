@@ -1,8 +1,8 @@
-import * as Koa from 'koa';
-import * as Router from 'koa-router';
-import * as next from 'next';
+import Koa from 'koa';
+import Router from 'koa-router';
+import next from 'next';
 
-import * as Logger from 'bunyan';
+import Logger from 'bunyan';
 
 const logOptions: Logger.LoggerOptions = {
     name: 'app',
@@ -59,4 +59,4 @@ app.prepare()
             logger.info(`> Ready on localhost:${port}`);
         });
     })
-    .catch(err => logger.error(err, 'Server prepared is faild.'));
+    .catch((err: any) => logger.error(err, 'Server prepared is faild.'));
