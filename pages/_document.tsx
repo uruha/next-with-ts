@@ -4,11 +4,11 @@ import Document, {
     Head,
     Main,
     NextScript,
-    NextDocumentContext
+    DocumentContext
 } from 'next/document';
 
 class CustomDocument extends Document {
-    static async getInitialProps(ctx: NextDocumentContext) {
+    static async getInitialProps(ctx: DocumentContext) {
         const initialProps = await Document.getInitialProps(ctx);
         return { ...initialProps };
     }

@@ -9,7 +9,8 @@ module.exports = {
     testPathIgnorePatterns: [
         '<rootDir>/.next/',
         '<rootDir>/out/',
-        '<rootDir>/node_modules/'
+        '<rootDir>/node_modules/',
+        '<rootDir>/dist/'
     ],
     moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
     collectCoverage: true,
