@@ -12,9 +12,7 @@ export const counter = (
 ): CountState => {
     switch (action.type) {
         case UPDATE_COUNT:
-            return Object.assign({}, state, {
-                count: action.payload
-            });
+            return { ...state, count: action.payload };
         default:
             return state;
     }
