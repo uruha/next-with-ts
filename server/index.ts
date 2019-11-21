@@ -1,5 +1,6 @@
 import Koa from 'koa';
 import Router from 'koa-router';
+import KoaHelmet from 'koa-helmet';
 import next from 'next';
 
 import Logger from 'bunyan';
@@ -54,6 +55,7 @@ app.prepare()
             await next();
         });
 
+        server.use(KoaHelmet());
         server.use(router.routes());
         server.listen(port, () => {
             logger.info(`> Ready on localhost:${port}`);
