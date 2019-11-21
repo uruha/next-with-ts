@@ -1,0 +1,25 @@
+version: "3.6"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: ./docker/app/Dockerfile
+      args:
+        BUILD_ENV: development
+    command: sh -c "npm install && npm run dev"
+    volumes:
+      - .:/app:delegated
+      - node_modules:/app/node_modules:delegated
+
+  nginx:
+    build: ./docker/web
+    ports:
+      - 80:80
+    depends_on:
+      - app
+    restart: always
+
+volumes:
+  node_modules:
+    driver: 'local'
