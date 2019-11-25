@@ -67,3 +67,14 @@ Business logic concentrates on Saga tasks.
             - Reducer testing
         - [Redux-saga-test-plan](https://github.com/jfairbank/redux-saga-test-plan)
             - Saga task testing
+
+## How to use
+### Quick development start
+```
+1. npm i install
+2. docker-compose up
+
+> http:://localhost(:80)
+```
+
+This project use nginx for reverse proxy and static resource cache control.
