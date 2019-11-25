@@ -78,3 +78,11 @@ Business logic concentrates on Saga tasks.
 ```
 
 This project use nginx for reverse proxy and static resource cache control.
+
+```
+   localhost:80      localhost:3000
+    -----------     ----------------
+--> |  nginx  | --> |     app      |
+    | [proxy] |     | [next + koa] |
+    -----------     ----------------
+```
