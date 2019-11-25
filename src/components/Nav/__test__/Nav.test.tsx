@@ -1,12 +1,13 @@
 /* eslint-env jest */
 import * as React from 'react';
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 
 import Nav from '~/components/Nav';
 
 describe('Navigation', () => {
     it('renders navigation list itmes collection', () => {
-        const wrapper = shallow(<Nav />);
-        expect(wrapper.find('.Nav-list').find('li')).toHaveLength(4);
+        const { container } = render(<Nav />);
+        const lists = container.querySelectorAll('.Nav-list li');
+        expect(lists).toHaveLength(4);
     });
 });
