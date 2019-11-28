@@ -1,37 +1,25 @@
 /* eslint-env jest */
 import * as React from 'react';
-import { shallow } from 'enzyme';
+import { render, cleanup } from '@testing-library/react';
 
 import Layout from '~/components/Layout';
-import Nav from '~/components/Nav';
 
 describe('Layout', () => {
-    it('render title', () => {
-        const title = 'Test';
+    afterEach(cleanup);
 
-        const wrapper = shallow(<Layout title={title} />);
-        expect(
-            wrapper
-                .find('Head')
-                .find('title')
-                .text()
-        ).toStrictEqual(title);
+    it('render navigation component', () => {
+        const { container } = render(<Layout />);
+        const navComponent = container.getElementsByTagName('nav');
+        expect(navComponent.length > 0).toStrictEqual(true);
     });
 
-    it('render navigation', () => {
-        const wrapper = shallow(<Layout />);
-        expect(wrapper.find('header').contains(<Nav />)).toStrictEqual(true);
-    });
-
-    it('render children', () => {
-        const wrapper = shallow(
+    it('render children component', () => {
+        const { container } = render(
             <Layout>
                 <div className="test" />
             </Layout>
         );
-
-        expect(
-            wrapper.find('main').contains(<div className="test" />)
-        ).toStrictEqual(true);
+        const childComponent = container.getElementsByClassName('test');
+        expect(childComponent.length > 0).toStrictEqual(true);
     });
 });
