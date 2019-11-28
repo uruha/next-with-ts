@@ -19,5 +19,8 @@ Thumbs.db
 # VS code
 .vscode
 
+# WebStorm
+.idea
+
 # jest
 coverage
