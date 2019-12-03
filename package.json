@@ -31,6 +31,7 @@
     "dependencies": {
         "bunyan": "^1.8.12",
         "cross-env": "^6.0.3",
+        "isomorphic-unfetch": "^3.0.0",
         "koa": "^2.11.0",
         "koa-helmet": "^5.2.0",
         "koa-router": "^7.4.0",
