@@ -1,14 +1,14 @@
 /**
  * Email
  *
- * @example "xxxx\u0040dmm.com"
+ * @example "xxxx\u0040example.com"
  */
 export type Email = string;
 
 /**
  * Nickname
  *
- * @example "mekuru_chan"
+ * @example "sid_jankovic_jeronimo_mongo"
  */
 export type Nickname = string;
 
