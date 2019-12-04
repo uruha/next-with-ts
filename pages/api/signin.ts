@@ -13,6 +13,7 @@ const pseudoToken: Token = {
 export default (req: NextApiRequest, res: NextApiResponse) => {
     const cookies = new Cookies(req.headers.cookie);
     console.log(cookies); // get HttpOnly directive cookie
+    console.log(req.body);
 
     if (req.method === 'POST') {
         /**

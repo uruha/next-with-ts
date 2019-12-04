@@ -4,18 +4,20 @@ import Router from 'next/router';
 
 import fetch from 'isomorphic-unfetch';
 
+import { SigninRequest, Email, Password } from '~/modelTypes';
+
 const Signin: React.FC = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [email, setEmail] = useState<Email>('');
+    const [password, setPassword] = useState<Password>('');
 
     const hundleSubmit = async (e: FormEvent) => {
         e.preventDefault();
-        console.log(email);
-        console.log(password);
+        const signinRequest: SigninRequest = { email, password };
 
         try {
             const res = await fetch('/api/signin', {
-                method: 'POST'
+                method: 'POST',
+                body: JSON.stringify(signinRequest)
             });
 
             if (res.status === 201) {
