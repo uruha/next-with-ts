@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Link from 'next/link';
 
 const Nav: React.FC = () => (
     <nav>
@@ -6,7 +7,11 @@ const Nav: React.FC = () => (
             <li>Header</li>
             <li>link 1</li>
             <li>link 2</li>
-            <li>link 3</li>
+            <li>
+                <Link href="/signin">
+                    <a>signin</a>
+                </Link>
+            </li>
         </ul>
         <style jsx>{`
             .Nav-list {

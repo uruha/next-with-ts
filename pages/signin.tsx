@@ -1,9 +1,8 @@
 import * as React from 'react';
 import { useState, ChangeEvent, FormEvent } from 'react';
+import Router from 'next/router';
 
 import fetch from 'isomorphic-unfetch';
-
-import { Token } from '~/modelTypes';
 
 const Signin: React.FC = () => {
     const [email, setEmail] = useState('');
@@ -15,27 +14,12 @@ const Signin: React.FC = () => {
         console.log(password);
 
         try {
-            /**
-             * @NOTE
-             * 1. authentication
-             * try fetch `/auth/signin`
-             */
             const res = await fetch('/api/signin', {
                 method: 'POST'
             });
 
             if (res.status === 201) {
-                const { token }: { token: Token } = await res.json();
-                console.log(token);
-                /**
-                 * @NOTE
-                 * 2. set cookie
-                 */
-
-                /**
-                 * @NOTE
-                 * 3. redirect
-                 */
+                Router.push('/');
             }
         } catch (error) {
             console.log(error);
