@@ -4,6 +4,8 @@ import { UPDATE_COUNT } from '~/constant';
 import { CounterActionTypes } from '~/actionTypes';
 import { CountState } from '~/stateTypes';
 
+import { account } from '~/reducers/account';
+
 export const initialCounter: CountState = { count: 0 };
 
 export const counter = (
@@ -19,7 +21,8 @@ export const counter = (
 };
 
 export const rootReducer = combineReducers({
-    counter
+    counter,
+    account
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

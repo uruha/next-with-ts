@@ -1,4 +1,11 @@
-import { INCREMENT, DECREMENT, UPDATE_COUNT } from '~/constant';
+import {
+    INCREMENT,
+    DECREMENT,
+    UPDATE_COUNT,
+    GET_ACCOUNT,
+    UPDATE_ACCOUNT
+} from '~/constant';
+import { Account } from '~/modelTypes';
 
 interface IncrementAction {
     type: typeof INCREMENT;
@@ -19,3 +26,14 @@ export type CounterActionTypes =
     | IncrementAction
     | DecrementAction
     | UpdateCountAction;
+
+interface GetAccountAction {
+    type: typeof GET_ACCOUNT;
+}
+
+interface UpdateAccountAction {
+    type: typeof UPDATE_ACCOUNT;
+    payload: { data: Account };
+}
+
+export type AccountActionTypes = GetAccountAction | UpdateAccountAction;

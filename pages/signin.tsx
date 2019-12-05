@@ -2,6 +2,9 @@ import * as React from 'react';
 import { useState, ChangeEvent, FormEvent } from 'react';
 import Router from 'next/router';
 
+import { useDispatch } from 'react-redux';
+import { accountActions } from '~/actions/account';
+
 import fetch from 'isomorphic-unfetch';
 
 import { SigninRequest, Email, Password } from '~/modelTypes';
@@ -9,6 +12,7 @@ import { SigninRequest, Email, Password } from '~/modelTypes';
 const Signin: React.FC = () => {
     const [email, setEmail] = useState<Email>('');
     const [password, setPassword] = useState<Password>('');
+    const dispatch = useDispatch();
 
     const hundleSubmit = async (e: FormEvent) => {
         e.preventDefault();
@@ -21,6 +25,7 @@ const Signin: React.FC = () => {
             });
 
             if (res.status === 201) {
+                dispatch(accountActions.getAccount());
                 Router.push('/');
             }
         } catch (error) {
