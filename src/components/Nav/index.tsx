@@ -9,7 +9,6 @@ const Nav: React.FC = () => {
     const account = useSelector<RootState, AccountState>(
         state => state.account
     );
-    console.log(account);
 
     return (
         <nav>
