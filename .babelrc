@@ -12,16 +12,25 @@
         "development": {
             "presets": [
                 "next/babel"
+            ],
+            "plugins": [
+                "styled-jsx/babel-test"
             ]
         },
         "production": {
             "presets": [
                 "next/babel"
+            ],
+            "plugins": [
+                "styled-jsx/babel-test"
             ]
         },
         "test": {
             "presets": [
                 "next/babel"
+            ],
+            "plugins": [
+                "styled-jsx/babel-test"
             ]
         }
     }
