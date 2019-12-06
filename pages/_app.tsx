@@ -2,13 +2,13 @@ import * as React from 'react';
 import { NextComponentType } from 'next';
 import App, { AppProps } from 'next/app';
 
-// import { Dispatch } from 'redux';
+import { Dispatch } from 'redux';
 import withRedux from 'next-redux-wrapper';
 import { Provider } from 'react-redux';
 import makeStore from '~/store';
 import { StoreWithSaga } from '~/store';
 
-// import { increment } from '~/actions';
+import { increment } from '~/actions';
 
 interface CustomProps {
     store: StoreWithSaga;
@@ -31,17 +31,13 @@ class CustomApp extends App<CustomProps & AppProps> {
     }) {
         let pageProps = {};
 
-        /**
-         * @BUG
-         * SPA mode, not work run sagas task
-         */
-        // await ctx.store.execSagaTask(ctx.isServer, (dispatch: Dispatch) => {
-        //     dispatch(increment(1));
-        // });
-
         if (Component.getInitialProps) {
             pageProps = await Component.getInitialProps(ctx);
         }
+
+        await ctx.store.execSagaTask(ctx.isServer, (dispatch: Dispatch) => {
+            dispatch(increment(1));
+        });
 
         return { pageProps };
     }
