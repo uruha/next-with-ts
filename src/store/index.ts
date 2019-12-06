@@ -27,7 +27,6 @@ export default (initialState: RootState) => {
     store.runSagaTask = () => {
         if (store.sagaTask) return;
         store.sagaTask = sagaMiddleware.run(rootSaga);
-        console.log('saga is runing');
     };
 
     store.stopSaga = async () => {
@@ -42,13 +41,7 @@ export default (initialState: RootState) => {
 
         if (isServer) {
             store.stopSaga();
-            console.log('stop saga');
         }
-
-        // if (!isServer) {
-        //     console.log('restart saga');
-        //     store.runSagaTask();
-        // };
     };
 
     store.runSagaTask();
