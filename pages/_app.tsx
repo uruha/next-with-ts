@@ -9,6 +9,8 @@ import makeStore from '~/store';
 import { StoreWithSaga } from '~/store';
 
 import { increment } from '~/actions';
+import { accountActions } from '~/actions/account';
+import { getAccountState } from '~/sagas/selectors/account';
 
 interface CustomProps {
     store: StoreWithSaga;
@@ -40,6 +42,22 @@ class CustomApp extends App<CustomProps & AppProps> {
         });
 
         return { pageProps };
+    }
+
+    componentDidMount() {
+        /**
+         * @NOTE
+         * this action is only client behavior.
+         */
+        const { store } = this.props;
+        const { pathname } = this.props.router;
+
+        if (pathname !== '/signin') {
+            const account = getAccountState(store.getState());
+            if (!(account.data.email && account.data.nickname)) {
+                store.dispatch(accountActions.getAccount());
+            }
+        }
     }
 
     render() {

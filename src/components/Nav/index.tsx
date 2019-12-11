@@ -17,9 +17,11 @@ const Nav: React.FC = () => {
                 <li>link 1</li>
                 <li>link 2</li>
                 <li>
-                    <Link href="/signin">
-                        <a>signin</a>
-                    </Link>
+                    {!(account.data.email && account.data.nickname) && (
+                        <Link href="/signin">
+                            <a>signin</a>
+                        </Link>
+                    )}
                 </li>
             </ul>
             {account.data.email && account.data.nickname && (
