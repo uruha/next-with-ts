@@ -11,12 +11,16 @@ const pseudoAccount: Account = {
 
 export default (req: NextApiRequest, res: NextApiResponse) => {
     const cookies = new Cookies(req.headers.cookie);
-    const accessAuth = new Auth(cookies.get('_token'));
+    const _token = cookies.get('_token');
 
-    /**
-     * @NOTE
-     * Create recycle utility ?
-     */
+    if (!_token) {
+        res.setHeader('Content-Type', 'application/json');
+        res.statusCode = 200;
+        res.end(JSON.stringify({ email: '', nickname: '' }));
+        return;
+    }
+
+    const accessAuth = new Auth(_token);
 
     if (!accessAuth.isAuthenticated) {
         res.status(401).send('Expire is over.');
