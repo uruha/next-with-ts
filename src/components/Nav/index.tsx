@@ -30,7 +30,6 @@ const Nav: React.FC = () => {
                     <li>Name: {account.data.nickname}</li>
                 </ul>
             )}
-            <div></div>
             <style jsx>{`
                 .Nav-list {
                     display: flex;
