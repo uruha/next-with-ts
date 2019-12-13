@@ -14,7 +14,7 @@ const Signin: React.FC = () => {
     const [password, setPassword] = useState<Password>('');
     const dispatch = useDispatch();
 
-    const hundleSubmit = async (e: FormEvent) => {
+    const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
         const signinRequest: SigninRequest = { email, password };
 
@@ -36,7 +36,7 @@ const Signin: React.FC = () => {
     return (
         <form
             onSubmit={e => {
-                hundleSubmit(e);
+                handleSubmit(e);
                 setEmail('');
                 setPassword('');
             }}
