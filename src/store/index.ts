@@ -4,12 +4,8 @@ import { createLogger } from 'redux-logger';
 import { rootReducer, RootState } from '~/reducers';
 import rootSaga from '~/sagas';
 
-export interface SagaTask extends Task {
-    done?: any;
-}
-
 export interface StoreWithSaga extends Store<RootState> {
-    sagaTask: SagaTask | null;
+    sagaTask: Task | null;
     runSagaTask: () => void;
     stopSaga: () => Promise<void>;
     execSagaTask: (isServer: boolean, tasks: any) => Promise<void>;
@@ -36,16 +32,16 @@ export default (initialState: RootState) => {
     store.stopSaga = async () => {
         if (!store.sagaTask) return;
         store.dispatch(END);
-        await store.sagaTask.done;
+        await store.sagaTask.toPromise();
         store.sagaTask = null;
     };
 
     store.execSagaTask = async (isServer, tasks) => {
-        store.runSagaTask();
         tasks(store.dispatch);
-        await store.stopSaga();
 
-        if (!isServer) store.runSagaTask();
+        if (isServer) {
+            store.stopSaga();
+        }
     };
 
     store.runSagaTask();
