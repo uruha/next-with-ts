@@ -70,6 +70,12 @@ Business logic concentrates on Saga tasks.
         - [Redux-saga-test-plan](https://github.com/jfairbank/redux-saga-test-plan)
             - Saga task testing
 
+## Environment
+```
+- node >= 12.13.x
+- next >= 9.1.4
+```
+
 ## How to use
 ### Quick development start
 ```
