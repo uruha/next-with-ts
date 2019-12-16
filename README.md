@@ -41,6 +41,8 @@ Business logic concentrates on Saga tasks.
 ## Spec
 - Application
     - Next.js
+- HttpClient
+    - Isomorphic-unfetch
 - Flux
     - Redux
     - Middleware
@@ -61,7 +63,7 @@ Business logic concentrates on Saga tasks.
         - Web server logger
 - Unit test
     - Jest
-        - Enzyme
+        - [Testing-library](https://github.com/testing-library/react-testing-library)
             - Component testing
         - [Snapshot-diff](https://github.com/jest-community/snapshot-diff)
             - Reducer testing
