@@ -41,6 +41,8 @@ Business logic concentrates on Saga tasks.
 ## Spec
 - Application
     - Next.js
+- HttpClient
+    - Isomorphic-unfetch
 - Flux
     - Redux
     - Middleware
@@ -61,12 +63,18 @@ Business logic concentrates on Saga tasks.
         - Web server logger
 - Unit test
     - Jest
-        - Enzyme
+        - [Testing-library](https://github.com/testing-library/react-testing-library)
             - Component testing
         - [Snapshot-diff](https://github.com/jest-community/snapshot-diff)
             - Reducer testing
         - [Redux-saga-test-plan](https://github.com/jfairbank/redux-saga-test-plan)
             - Saga task testing
+
+## Environment
+```
+- node >= 12.13.x
+- next >= 9.1.4
+```
 
 ## How to use
 ### Quick development start
@@ -74,7 +82,7 @@ Business logic concentrates on Saga tasks.
 1. npm i install
 2. docker-compose up
 
-> http:://localhost(:80)
+> http://localhost(:80)
 ```
 
 This project use nginx for reverse proxy and static resource cache control.
