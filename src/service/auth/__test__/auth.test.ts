@@ -66,4 +66,12 @@ describe('Auth service [Abnormal]', () => {
     it('when Auth class instantiate with no token, decoded token expire is 0', () => {
         expect(auth.decodedToken.exp).toBe(0);
     });
+
+    it('determining if it has expired', () => {
+        expect(auth.isExpired).toBe(true);
+    });
+
+    it('determining if it has authenticated', () => {
+        expect(auth.isAuthenticated).toBe(false);
+    });
 });
