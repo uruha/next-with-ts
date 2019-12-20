@@ -22,6 +22,11 @@ describe('Account Tasks', () => {
             .silentRun();
     });
 
+    /**
+     * @NOTE
+     * when this test insert `.put(accountAction.updateAccount(testingAccout))`,
+     * return unknown error.
+     */
     it('get account API call [success]', () => {
         return expectSaga(runRequestGetAccount)
             .provide([
