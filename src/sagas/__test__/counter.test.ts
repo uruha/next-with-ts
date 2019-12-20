@@ -12,7 +12,7 @@ describe('Counter tasks', () => {
             .withState({ counter: { count: 0 } })
             .dispatch(counterActions.increment(1))
             .put(counterActions.updateCount(1))
-            .run();
+            .silentRun();
     });
 
     it('decrement task', () => {
@@ -20,6 +20,6 @@ describe('Counter tasks', () => {
             .withState({ counter: { count: 1 } })
             .dispatch(counterActions.decrement(1))
             .put(counterActions.updateCount(0))
-            .run();
+            .silentRun();
     });
 });
