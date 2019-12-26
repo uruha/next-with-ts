@@ -44,6 +44,13 @@ app.prepare()
             await next();
         });
 
+        router.get('/health', async (ctx: ParameterizedContext<Logger>) => {
+            await ctx.logger.info({ req: ctx.req }, 'HEALTH');
+            ctx.status = 200;
+            ctx.type = 'application/json';
+            ctx.body = JSON.stringify({ uptime: process.uptime() });
+        });
+
         router.get('*', async (ctx: ParameterizedContext<Logger>) => {
             await ctx.logger.info({ req: ctx.req }, 'REQUEST');
             await handle(ctx.req, ctx.res);
