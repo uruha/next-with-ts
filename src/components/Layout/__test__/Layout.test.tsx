@@ -8,7 +8,7 @@ import { rootReducer } from '~/reducers';
 import { Provider } from 'react-redux';
 
 const renderWithProvider = (
-    testComponent: any,
+    testComponent: React.ReactElement,
     store = createStore(rootReducer, {})
 ) => {
     return render(<Provider store={store}>{testComponent}</Provider>);
