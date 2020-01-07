@@ -12,26 +12,28 @@ const Nav: React.FC = () => {
         state => state.account
     );
 
+    const hasAccountData = Boolean(account.data.email && account.data.nickname);
+
     return (
         <nav>
             <ul className="Nav-list">
                 <li>Header</li>
                 <li>link 1</li>
                 <li>link 2</li>
-                {!(account.data.email && account.data.nickname) && (
+                {!hasAccountData && (
                     <li>
                         <Link href="/signin">
                             <a>signin</a>
                         </Link>
                     </li>
                 )}
-                {account.data.email && account.data.nickname && (
+                {hasAccountData && (
                     <li>
                         <Signout />
                     </li>
                 )}
             </ul>
-            {account.data.email && account.data.nickname && (
+            {hasAccountData && (
                 <ul>
                     <li>Mail: {account.data.email}</li>
                     <li>Name: {account.data.nickname}</li>
