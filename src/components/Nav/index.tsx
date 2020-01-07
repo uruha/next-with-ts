@@ -5,25 +5,12 @@ import Link from 'next/link';
 import { useSelector } from 'react-redux';
 import { RootState } from '~/reducers';
 import { AccountState } from '~/stateTypes';
+import Signout from '~/components/Signout';
 
 const Nav: React.FC = () => {
     const account = useSelector<RootState, AccountState>(
         state => state.account
     );
-
-    const handleSignout = async () => {
-        try {
-            const res = await fetch('/api/signout', {
-                method: 'POST'
-            });
-
-            if (res.status === 204) {
-                window.location.href = '/';
-            }
-        } catch (error) {
-            console.log(error);
-        }
-    };
 
     return (
         <nav>
@@ -40,9 +27,7 @@ const Nav: React.FC = () => {
                 )}
                 {account.data.email && account.data.nickname && (
                     <li>
-                        <button type="button" onClick={() => handleSignout()}>
-                            signout
-                        </button>
+                        <Signout />
                     </li>
                 )}
             </ul>
