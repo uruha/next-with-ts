@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Link from 'next/link';
+// import Router from 'next/router';
 
 import { useSelector } from 'react-redux';
 import { RootState } from '~/reducers';
@@ -10,19 +11,40 @@ const Nav: React.FC = () => {
         state => state.account
     );
 
+    const handleSignout = async () => {
+        try {
+            const res = await fetch('/api/signout', {
+                method: 'POST'
+            });
+
+            if (res.status === 204) {
+                window.location.href = '/';
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
     return (
         <nav>
             <ul className="Nav-list">
                 <li>Header</li>
                 <li>link 1</li>
                 <li>link 2</li>
-                <li>
-                    {!(account.data.email && account.data.nickname) && (
+                {!(account.data.email && account.data.nickname) && (
+                    <li>
                         <Link href="/signin">
                             <a>signin</a>
                         </Link>
-                    )}
-                </li>
+                    </li>
+                )}
+                {account.data.email && account.data.nickname && (
+                    <li>
+                        <button type="button" onClick={() => handleSignout()}>
+                            signout
+                        </button>
+                    </li>
+                )}
             </ul>
             {account.data.email && account.data.nickname && (
                 <ul>
