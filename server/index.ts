@@ -74,4 +74,4 @@ app.prepare()
             logger.info(`> Ready on localhost:${port}`);
         });
     })
-    .catch((err: any) => logger.error(err, 'Server prepared is faild.'));
+    .catch((err: Error) => logger.error(err, 'Server prepared is faild.'));
