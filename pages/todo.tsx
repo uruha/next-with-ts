@@ -1,9 +1,5 @@
 import React, { useState } from 'react';
-
-type Task = {
-    text: string;
-    checked: boolean;
-};
+import TodoLists, { Task } from '~/components/TodoLists';
 
 const initialState: Task[] = [
     {
@@ -26,41 +22,29 @@ const initialState: Task[] = [
 
 const Todo: React.FC = () => {
     const [tasks, setTasks] = useState(initialState); // タスク一覧
-    const [text, inputText] = useState(''); // 入力フォームの一時保管用
+    const [text, setText] = useState(''); // 入力フォームの一時保管用
 
     const addTask = (text?: string) => {
         if (!text) return;
 
         const task: Task = { text, checked: false };
         setTasks([...tasks, task]);
-        inputText('');
+        setText('');
     };
 
     return (
         <>
             <main>
                 <h1>今日のやること</h1>
-                <ul className="Tasks-list">
-                    {tasks.map((task, index) => (
-                        <li key={index} className="Tasks-list_item">
-                            <label>
-                                <input
-                                    type="checkbox"
-                                    defaultChecked={task.checked}
-                                    aria-checked={task.checked}
-                                />
-                                <p className="Text">{task.text}</p>
-                            </label>
-                        </li>
-                    ))}
-                </ul>
+                {tasks.length > 0 && <TodoLists tasks={tasks} />}
+
                 <form className="Form">
                     <input
                         type="text"
                         className="Input-text"
                         value={text}
                         placeholder="タスクを追加しよう!!"
-                        onChange={e => inputText(e.target.value)}
+                        onChange={e => setText(e.target.value)}
                     />
                     <button
                         type="button"
@@ -75,14 +59,9 @@ const Todo: React.FC = () => {
             <style jsx>{`
                 main {
                     width: 80%;
+                    max-width: 600px;
                     margin: 0 auto;
-                }
-                .Tasks-list_item label {
-                    display: inline-flex;
-                    align-items: center;
-                }
-                .Tasks-list_item .Text:hover {
-                    cursor: pointer;
+                    padding-top: 20px;
                 }
                 .Form {
                     height: 48px;
@@ -97,6 +76,7 @@ const Todo: React.FC = () => {
                     flex: 1 1 0;
                     padding: 0 12px;
                     margin-right: 12px;
+                    border: solid 1px #ccc;
                 }
                 .Button {
                     appearance: none;
