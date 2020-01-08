@@ -6,7 +6,7 @@ export type Task = {
 };
 
 interface TodoListsProps {
-    tasks: Array<Task>;
+    tasks: Task[];
 }
 
 const TodoLists: React.FC<TodoListsProps> = ({ tasks }) => (
