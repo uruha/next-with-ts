@@ -1,6 +1,5 @@
 import * as React from 'react';
 import Link from 'next/link';
-// import Router from 'next/router';
 
 import { useSelector } from 'react-redux';
 import { RootState } from '~/reducers';
