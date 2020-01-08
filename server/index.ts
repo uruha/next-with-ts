@@ -1,4 +1,4 @@
-import Koa from 'koa';
+import Koa, { ParameterizedContext } from 'koa';
 import Router from 'koa-router';
 import KoaHelmet from 'koa-helmet';
 import next from 'next';
@@ -44,7 +44,20 @@ app.prepare()
             await next();
         });
 
-        router.get('*', async ctx => {
+        router.get('/health', async (ctx: ParameterizedContext<Logger>) => {
+            await ctx.logger.info({ req: ctx.req }, 'HEALTH');
+            ctx.status = 200;
+            ctx.type = 'application/json';
+            ctx.body = JSON.stringify({ uptime: process.uptime() });
+        });
+
+        router.get('*', async (ctx: ParameterizedContext<Logger>) => {
+            await ctx.logger.info({ req: ctx.req }, 'REQUEST');
+            await handle(ctx.req, ctx.res);
+            ctx.respond = false;
+        });
+
+        router.post('*', async (ctx: ParameterizedContext<Logger>) => {
             await ctx.logger.info({ req: ctx.req }, 'REQUEST');
             await handle(ctx.req, ctx.res);
             ctx.respond = false;
@@ -61,4 +74,4 @@ app.prepare()
             logger.info(`> Ready on localhost:${port}`);
         });
     })
-    .catch((err: any) => logger.error(err, 'Server prepared is faild.'));
+    .catch((err: Error) => logger.error(err, 'Server prepared is faild.'));

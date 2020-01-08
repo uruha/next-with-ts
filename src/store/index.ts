@@ -1,23 +1,26 @@
-import { createStore, applyMiddleware, Store } from 'redux';
+import { createStore, applyMiddleware, Store, Middleware } from 'redux';
 import createSagaMiddleware, { Task, END } from 'redux-saga';
 import { createLogger } from 'redux-logger';
 import { rootReducer, RootState } from '~/reducers';
 import rootSaga from '~/sagas';
+import { Dispatch } from 'redux';
 
-export interface SagaTask extends Task {
-    done?: any;
+interface TasksCallbackType {
+    (argv: Dispatch): void;
 }
-
 export interface StoreWithSaga extends Store<RootState> {
-    sagaTask: SagaTask | null;
+    sagaTask: Task | null;
     runSagaTask: () => void;
     stopSaga: () => Promise<void>;
-    execSagaTask: (isServer: boolean, tasks: any) => Promise<void>;
+    execSagaTask: (
+        isServer: boolean,
+        tasks: TasksCallbackType
+    ) => Promise<void>;
 }
 
 export default (initialState: RootState) => {
     const sagaMiddleware = createSagaMiddleware();
-    const middlewares: any = [sagaMiddleware];
+    const middlewares: Middleware[] = [sagaMiddleware];
 
     const logger = createLogger();
     middlewares.push(logger);
@@ -36,16 +39,16 @@ export default (initialState: RootState) => {
     store.stopSaga = async () => {
         if (!store.sagaTask) return;
         store.dispatch(END);
-        await store.sagaTask.done;
+        await store.sagaTask.toPromise();
         store.sagaTask = null;
     };
 
     store.execSagaTask = async (isServer, tasks) => {
-        store.runSagaTask();
         tasks(store.dispatch);
-        await store.stopSaga();
 
-        if (!isServer) store.runSagaTask();
+        if (isServer) {
+            store.stopSaga();
+        }
     };
 
     store.runSagaTask();

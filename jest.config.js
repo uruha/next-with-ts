@@ -22,5 +22,7 @@ module.exports = {
             'babelConfig': true,
             'tsConfig': 'jest.tsconfig.json'
         }
-    }
+    },
+    automock: false,
+    setupFiles: ['./setupJestFetchMock.js']
 };
