@@ -17,7 +17,7 @@ const Signout: React.FC = () => {
     };
 
     return (
-        <button type="button" onClick={() => handleSignout()}>
+        <button type="button" onClick={handleSignout}>
             signout
         </button>
     );
