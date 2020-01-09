@@ -32,6 +32,12 @@ const Todo: React.FC = () => {
         setText('');
     };
 
+    const handleEditTask = (index: number, task: Task) => {
+        const t = tasks;
+        t[index] = task;
+        setTasks([...t]);
+    };
+
     const handleRemoveTask = (index: number) => {
         const t = tasks;
         t.splice(index, 1);
@@ -44,6 +50,7 @@ const Todo: React.FC = () => {
                 {tasks.length > 0 && (
                     <TodoLists
                         tasks={tasks}
+                        handleEditTask={handleEditTask}
                         handleRemoveTask={handleRemoveTask}
                     />
                 )}
