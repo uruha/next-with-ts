@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useState, ChangeEvent, FormEvent } from 'react';
+import useEmail from '~/hooks/signin/useEmail';
 import Router from 'next/router';
 
 import { useDispatch } from 'react-redux';
@@ -7,16 +8,20 @@ import { accountActions } from '~/actions/account';
 
 import fetch from 'isomorphic-unfetch';
 
-import { SigninRequest, Email, Password } from '~/modelTypes';
+import { SigninRequest, Password } from '~/modelTypes';
 
 const Signin: React.FC = () => {
-    const [email, setEmail] = useState<Email>('');
+    // const [email, setEmail] = useState<Email>('');
+    const email = useEmail('');
     const [password, setPassword] = useState<Password>('');
     const dispatch = useDispatch();
 
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
-        const signinRequest: SigninRequest = { email, password };
+        const signinRequest: SigninRequest = {
+            email: email.entertedValue,
+            password
+        };
 
         try {
             const res = await fetch('/api/signin', {
@@ -37,7 +42,7 @@ const Signin: React.FC = () => {
         <form
             onSubmit={e => {
                 handleSubmit(e);
-                setEmail('');
+                email.setInputValue('');
                 setPassword('');
             }}
         >
@@ -46,10 +51,8 @@ const Signin: React.FC = () => {
                 <label htmlFor="email">email</label>
                 <input
                     id="email"
-                    value={email}
-                    onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                        setEmail(e.target.value);
-                    }}
+                    value={email.entertedValue}
+                    onChange={email.changedValue}
                     type="email"
                 />
             </div>
