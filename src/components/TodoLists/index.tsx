@@ -7,9 +7,10 @@ export type Task = {
 
 interface TodoListsProps {
     tasks: Task[];
+    handleRemoveTask: (index: number) => void;
 }
 
-const TodoLists: React.FC<TodoListsProps> = ({ tasks }) => (
+const TodoLists: React.FC<TodoListsProps> = ({ handleRemoveTask, tasks }) => (
     <>
         <ul className="Todo-list">
             {tasks.map((task, index) => (
@@ -22,6 +23,9 @@ const TodoLists: React.FC<TodoListsProps> = ({ tasks }) => (
                         />
                         <p className="Text">{task.text}</p>
                     </label>
+                    <button onClick={() => handleRemoveTask(index)}>
+                        削除
+                    </button>
                 </li>
             ))}
         </ul>

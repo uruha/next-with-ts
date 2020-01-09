@@ -32,11 +32,21 @@ const Todo: React.FC = () => {
         setText('');
     };
 
+    const handleRemoveTask = (index: number) => {
+        const t = tasks;
+        t.splice(index, 1);
+        setTasks([...t]);
+    };
     return (
         <>
             <main>
                 <h1>今日のやること</h1>
-                {tasks.length > 0 && <TodoLists tasks={tasks} />}
+                {tasks.length > 0 && (
+                    <TodoLists
+                        tasks={tasks}
+                        handleRemoveTask={handleRemoveTask}
+                    />
+                )}
 
                 <form className="Form">
                     <input
