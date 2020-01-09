@@ -7,7 +7,7 @@ import Auth from '~/service/auth';
 /*eslint @typescript-eslint/camelcase: ["error", {properties: "never"}]*/
 const pseudoToken: Token = {
     access_token:
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkNoaWJhIEtvdGFybyIsImlhdCI6MTU3NTQ0MzI4MiwiZXhwIjoxNTc3ODA0Mzk5fQ.DJ37-qY47QUuFx-z_t9DM4Ddb5FTRG9aRqFPOnSB3sM',
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkNoaWJhIEtvdGFybyIsImlhdCI6MTU3NTQ0MzI4MiwiZXhwIjoxNjA5NDI2Nzk5fQ.DHZMvPjPCWMMyqo4v5oRM6ho3Miv4XwAxOr7gJBLyvc',
     refresh_token: 'GEbRxBN_pseudoRefreshToken_edjnXbL',
     type: 'Bearer'
 };

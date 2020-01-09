@@ -4,11 +4,14 @@ import Link from 'next/link';
 import { useSelector } from 'react-redux';
 import { RootState } from '~/reducers';
 import { AccountState } from '~/stateTypes';
+import Signout from '~/components/Signout';
 
 const Nav: React.FC = () => {
     const account = useSelector<RootState, AccountState>(
         state => state.account
     );
+
+    const hasAccountData = Boolean(account.data.email && account.data.nickname);
 
     return (
         <nav>
@@ -16,15 +19,20 @@ const Nav: React.FC = () => {
                 <li>Header</li>
                 <li>link 1</li>
                 <li>link 2</li>
-                <li>
-                    {!(account.data.email && account.data.nickname) && (
+                {!hasAccountData && (
+                    <li>
                         <Link href="/signin">
                             <a>signin</a>
                         </Link>
-                    )}
-                </li>
+                    </li>
+                )}
+                {hasAccountData && (
+                    <li>
+                        <Signout />
+                    </li>
+                )}
             </ul>
-            {account.data.email && account.data.nickname && (
+            {hasAccountData && (
                 <ul>
                     <li>Mail: {account.data.email}</li>
                     <li>Name: {account.data.nickname}</li>
