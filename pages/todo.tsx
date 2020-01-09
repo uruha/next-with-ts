@@ -24,7 +24,7 @@ const Todo: React.FC = () => {
     const [tasks, setTasks] = useState(initialState); // タスク一覧
     const [text, setText] = useState(''); // 入力フォームの一時保管用
 
-    const addTask = (text?: string) => {
+    const handleAddTask = (text?: string) => {
         if (!text) return;
 
         const task: Task = { text, checked: false };
@@ -66,7 +66,7 @@ const Todo: React.FC = () => {
                     <button
                         type="button"
                         className="Button"
-                        onClick={() => addTask(text)}
+                        onClick={() => handleAddTask(text)}
                     >
                         タスクを追加
                     </button>
