@@ -1,5 +1,7 @@
 import * as React from 'react';
-import { useState, ChangeEvent, FormEvent } from 'react';
+import { FormEvent } from 'react';
+import useEmail from '~/hooks/signin/useEmail';
+import usePassword from '~/hooks/signin/usePassword';
 import Router from 'next/router';
 
 import { useDispatch } from 'react-redux';
@@ -7,16 +9,19 @@ import { accountActions } from '~/actions/account';
 
 import fetch from 'isomorphic-unfetch';
 
-import { SigninRequest, Email, Password } from '~/modelTypes';
+import { SigninRequest } from '~/modelTypes';
 
 const Signin: React.FC = () => {
-    const [email, setEmail] = useState<Email>('');
-    const [password, setPassword] = useState<Password>('');
+    const email = useEmail('');
+    const password = usePassword('');
     const dispatch = useDispatch();
 
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
-        const signinRequest: SigninRequest = { email, password };
+        const signinRequest: SigninRequest = {
+            email: email.entertedValue,
+            password: password.entertedValue
+        };
 
         try {
             const res = await fetch('/api/signin', {
@@ -37,8 +42,8 @@ const Signin: React.FC = () => {
         <form
             onSubmit={e => {
                 handleSubmit(e);
-                setEmail('');
-                setPassword('');
+                email.setInputValue('');
+                password.setInputValue('');
             }}
         >
             <h2>Signin</h2>
@@ -46,10 +51,8 @@ const Signin: React.FC = () => {
                 <label htmlFor="email">email</label>
                 <input
                     id="email"
-                    value={email}
-                    onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                        setEmail(e.target.value);
-                    }}
+                    value={email.entertedValue}
+                    onChange={email.changedValue}
                     type="email"
                 />
             </div>
@@ -57,10 +60,8 @@ const Signin: React.FC = () => {
                 <label htmlFor="password">password</label>
                 <input
                     id="password"
-                    value={password}
-                    onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                        setPassword(e.target.value);
-                    }}
+                    value={password.entertedValue}
+                    onChange={password.changedValue}
                     type="password"
                 />
             </div>
