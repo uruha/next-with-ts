@@ -2,26 +2,26 @@ import { useState } from 'react';
 import { Task } from '~/components/TodoLists';
 
 export const useTodoList = (initialState: Task[] = []) => {
-    const [tasks, setTasks] = useState(initialState);
+    const [list, setList] = useState(initialState);
 
-    const handleAddTask = (text?: string) => {
+    const add = (text?: string) => {
         if (!text) return;
 
         const task: Task = { text, checked: false };
-        setTasks([...tasks, task]);
+        setList([...list, task]);
     };
 
-    const handleEditTask = (index: number, task: Task) => {
-        const t = tasks;
+    const edit = (index: number, task: Task) => {
+        const t = list;
         t[index] = task;
-        setTasks([...t]);
+        setList([...t]);
     };
 
-    const handleRemoveTask = (index: number) => {
-        const t = tasks;
+    const remove = (index: number) => {
+        const t = list;
         t.splice(index, 1);
-        setTasks([...t]);
+        setList([...t]);
     };
 
-    return { tasks, handleAddTask, handleEditTask, handleRemoveTask };
+    return { list, add, edit, remove };
 };

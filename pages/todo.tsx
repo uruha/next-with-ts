@@ -23,25 +23,20 @@ const initialTasksState: Task[] = [
 
 const Todo: React.FC = () => {
     // 入力フォームの一時保管用
-    const { todo, changeTodo, resetTodo } = useTodo('');
+    const todo = useTodo('');
 
     // タスク一覧
-    const {
-        tasks,
-        handleAddTask,
-        handleEditTask,
-        handleRemoveTask
-    } = useTodoList(initialTasksState);
+    const tasks = useTodoList(initialTasksState);
 
     return (
         <>
             <main>
                 <h1>今日のやること</h1>
-                {tasks.length > 0 && (
+                {tasks.list.length > 0 && (
                     <TodoLists
-                        tasks={tasks}
-                        handleEditTask={handleEditTask}
-                        handleRemoveTask={handleRemoveTask}
+                        tasks={tasks.list}
+                        handleEditTask={tasks.edit}
+                        handleRemoveTask={tasks.remove}
                     />
                 )}
 
@@ -49,16 +44,16 @@ const Todo: React.FC = () => {
                     <input
                         type="text"
                         className="Input-text"
-                        value={todo}
+                        value={todo.value}
                         placeholder="タスクを追加しよう!!"
-                        onChange={changeTodo}
+                        onChange={todo.change}
                     />
                     <button
                         type="button"
                         className="Button"
                         onClick={() => {
-                            handleAddTask(todo);
-                            resetTodo();
+                            tasks.add(todo.value);
+                            todo.reset();
                         }}
                     >
                         タスクを追加

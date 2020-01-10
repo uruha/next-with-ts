@@ -1,15 +1,15 @@
 import { ChangeEvent, useState } from 'react';
 
 export const useTodo = (initialState = '') => {
-    const [todo, setTodo] = useState(initialState);
+    const [value, setValue] = useState(initialState);
 
-    const changeTodo = (e: ChangeEvent<HTMLInputElement>) => {
-        setTodo(e.target.value);
+    const change = (e: ChangeEvent<HTMLInputElement>) => {
+        setValue(e.target.value);
     };
 
-    const resetTodo = () => {
-        setTodo('');
+    const reset = () => {
+        setValue('');
     };
 
-    return { todo, changeTodo, resetTodo };
+    return { value, change, reset };
 };
