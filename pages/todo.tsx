@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import TodoLists, { Task } from '~/components/TodoLists';
+import userTodoList from '~/hooks/todo/useTodoList';
 
 const initialState: Task[] = [
     {
@@ -21,28 +22,16 @@ const initialState: Task[] = [
 ];
 
 const Todo: React.FC = () => {
-    const [tasks, setTasks] = useState(initialState); // タスク一覧
     const [text, setText] = useState(''); // 入力フォームの一時保管用
 
-    const handleAddTask = (text?: string) => {
-        if (!text) return;
+    // タスク一覧
+    const {
+        tasks,
+        handleAddTask,
+        handleEditTask,
+        handleRemoveTask
+    } = userTodoList(initialState);
 
-        const task: Task = { text, checked: false };
-        setTasks([...tasks, task]);
-        setText('');
-    };
-
-    const handleEditTask = (index: number, task: Task) => {
-        const t = tasks;
-        t[index] = task;
-        setTasks([...t]);
-    };
-
-    const handleRemoveTask = (index: number) => {
-        const t = tasks;
-        t.splice(index, 1);
-        setTasks([...t]);
-    };
     return (
         <>
             <main>
