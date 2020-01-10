@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Task } from '~/components/TodoLists';
 
-const userTodoList = (initialState: Task[] = []) => {
+export const useTodoList = (initialState: Task[] = []) => {
     const [tasks, setTasks] = useState(initialState);
 
     const handleAddTask = (text?: string) => {
@@ -25,5 +25,3 @@ const userTodoList = (initialState: Task[] = []) => {
 
     return { tasks, handleAddTask, handleEditTask, handleRemoveTask };
 };
-
-export default userTodoList;

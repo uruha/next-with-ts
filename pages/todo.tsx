@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import * as React from 'react';
 import TodoLists, { Task } from '~/components/TodoLists';
-import userTodoList from '~/hooks/todo/useTodoList';
+import { useTodo, useTodoList } from '~/hooks/todo';
 
-const initialState: Task[] = [
+const initialTasksState: Task[] = [
     {
         text: '豚肉を買う',
         checked: true
@@ -22,7 +22,8 @@ const initialState: Task[] = [
 ];
 
 const Todo: React.FC = () => {
-    const [text, setText] = useState(''); // 入力フォームの一時保管用
+    // 入力フォームの一時保管用
+    const { todo, changeTodo, resetTodo } = useTodo('');
 
     // タスク一覧
     const {
@@ -30,7 +31,7 @@ const Todo: React.FC = () => {
         handleAddTask,
         handleEditTask,
         handleRemoveTask
-    } = userTodoList(initialState);
+    } = useTodoList(initialTasksState);
 
     return (
         <>
@@ -48,14 +49,17 @@ const Todo: React.FC = () => {
                     <input
                         type="text"
                         className="Input-text"
-                        value={text}
+                        value={todo}
                         placeholder="タスクを追加しよう!!"
-                        onChange={e => setText(e.target.value)}
+                        onChange={changeTodo}
                     />
                     <button
                         type="button"
                         className="Button"
-                        onClick={() => handleAddTask(text)}
+                        onClick={() => {
+                            handleAddTask(todo);
+                            resetTodo();
+                        }}
                     >
                         タスクを追加
                     </button>
