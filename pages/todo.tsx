@@ -94,11 +94,14 @@ const Todo: React.FC = () => {
                     padding: 0 12px;
                     margin-right: 12px;
                     border: solid 1px #ccc;
+                    border-radius: 4px;
                 }
                 .Button {
                     appearance: none;
                     -webkit-appearance: none;
-                    border: none;
+                    border-radius: 4px;
+                    border: 0;
+                    padding: 0.5em 1em;
                     background: #fbd246;
                     outline-color: #ffa400;
                 }

@@ -53,7 +53,10 @@ const TodoLists: React.FC<TodoListsProps> = ({
                                 }
                             />
                         </label>
-                        <button onClick={() => handleRemoveTask(index)}>
+                        <button
+                            className="Button"
+                            onClick={() => handleRemoveTask(index)}
+                        >
                             削除
                         </button>
                     </li>
@@ -61,15 +64,30 @@ const TodoLists: React.FC<TodoListsProps> = ({
             </ul>
 
             <style jsx>{`
-                .Todo-list_item label {
-                    display: inline-flex;
+                .Todo-list_item {
+                    display: flex;
                     align-items: center;
+                    justify-content: space-between;
+                }
+                .Todo-list_item label {
+                    display: flex;
+                    align-items: center;
+                    flex: 1 1 0;
                 }
                 .Todo-list_item .Text {
-                    margin: 1em;
+                    margin: 0.5em;
+                    padding: 1em;
+                    flex-grow: 1;
                 }
                 .Todo-list_item .Text:hover {
                     cursor: pointer;
+                }
+                .Todo-list_item .Button {
+                    font-size: 12px;
+                    padding: 0.5em 1em;
+                    border: 0;
+                    border-radius: 4px;
+                    background: #ccc;
                 }
             `}</style>
         </>
