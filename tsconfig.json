@@ -22,6 +22,9 @@
     "paths": {
       "~/*": [
         "src/*"
+      ],
+      "~pages/*": [
+        "pages/*"
       ]
     },
     "rootDirs": [
