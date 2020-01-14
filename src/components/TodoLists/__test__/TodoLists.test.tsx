@@ -17,8 +17,8 @@ describe('TodoLists', () => {
             }
         ];
         const props = {
-            handleEditTask: jest.fn(),
-            handleRemoveTask: jest.fn(),
+            editTask: jest.fn(),
+            removeTask: jest.fn(),
             tasks
         };
         const { container } = render(<TodoLists {...props} />);

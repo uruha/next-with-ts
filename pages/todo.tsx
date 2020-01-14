@@ -47,8 +47,8 @@ const Todo: React.FC = () => {
                 {tasks.list.length > 0 ? (
                     <TodoLists
                         tasks={tasks.list}
-                        handleEditTask={tasks.edit}
-                        handleRemoveTask={tasks.remove}
+                        editTask={tasks.edit}
+                        removeTask={tasks.remove}
                     />
                 ) : (
                     <p className="Text">タスクはありません！</p>

@@ -7,13 +7,13 @@ export type Task = {
 
 interface TodoListsProps {
     tasks: Task[];
-    handleEditTask: (index: number, task: Task) => void;
-    handleRemoveTask: (index: number) => void;
+    editTask: (index: number, task: Task) => void;
+    removeTask: (index: number) => void;
 }
 
 const TodoLists: React.FC<TodoListsProps> = ({
-    handleEditTask,
-    handleRemoveTask,
+    editTask,
+    removeTask,
     tasks
 }) => {
     const handleOnKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -34,7 +34,7 @@ const TodoLists: React.FC<TodoListsProps> = ({
                                 defaultChecked={task.checked}
                                 aria-checked={task.checked}
                                 onChange={e => {
-                                    handleEditTask(index, {
+                                    editTask(index, {
                                         text: task.text,
                                         checked: e.target.checked
                                     });
@@ -46,7 +46,7 @@ const TodoLists: React.FC<TodoListsProps> = ({
                                 defaultValue={task.text}
                                 onKeyDown={e => handleOnKeyDown(e)}
                                 onBlur={e =>
-                                    handleEditTask(index, {
+                                    editTask(index, {
                                         text: e.target.value,
                                         checked: task.checked
                                     })
@@ -55,7 +55,7 @@ const TodoLists: React.FC<TodoListsProps> = ({
                         </label>
                         <button
                             className="Button"
-                            onClick={() => handleRemoveTask(index)}
+                            onClick={() => removeTask(index)}
                         >
                             削除
                         </button>
