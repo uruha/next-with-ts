@@ -73,7 +73,9 @@ describe('useTodoList', () => {
 
         act(() => result.current.remove(targetIndex));
 
-        const expected = initialTodoListValue.splice(targetIndex, 1);
+        const expected = initialTodoListValue.filter(
+            (_, index) => index !== targetIndex
+        );
 
         expect(result.current.list).toEqual(expected);
         expect(result.current.list.length).toBe(1);
