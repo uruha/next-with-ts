@@ -12,14 +12,14 @@ export const useTodoList = (initialState: Task[] = []) => {
     };
 
     const edit = (index: number, task: Task) => {
-        const t = list;
-        t[index] = task;
-        setList([...t]);
+        const l = [...list];
+        l[index] = task;
+        setList(l);
     };
 
     const remove = (index: number) => {
-        const t = list.filter((_, i) => index !== i);
-        setList(t);
+        const l = list.filter((_, i) => index !== i);
+        setList(l);
     };
 
     return { list, add, edit, remove };
