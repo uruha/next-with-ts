@@ -32,6 +32,14 @@ const Todo: React.FC = () => {
         e.preventDefault();
     };
 
+    const handleOnKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        // INFO: ENTER Key
+        if (e.keyCode !== 13) return;
+
+        tasks.add(todo.value);
+        todo.reset();
+    };
+
     return (
         <>
             <main>
@@ -51,6 +59,7 @@ const Todo: React.FC = () => {
                         value={todo.value}
                         placeholder="タスクを追加しよう!!"
                         onChange={todo.change}
+                        onKeyDown={handleOnKeyDown}
                     />
                     <button
                         type="button"
