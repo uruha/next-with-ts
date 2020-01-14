@@ -18,9 +18,8 @@ export const useTodoList = (initialState: Task[] = []) => {
     };
 
     const remove = (index: number) => {
-        const t = list;
-        t.splice(index, 1);
-        setList([...t]);
+        const t = list.filter((_, i) => index !== i);
+        setList(t);
     };
 
     return { list, add, edit, remove };
