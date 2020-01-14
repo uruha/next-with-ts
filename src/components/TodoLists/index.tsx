@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { KeyboardEvent } from 'react';
 
 export type Task = {
     text: string;
@@ -16,7 +16,7 @@ const TodoLists: React.FC<TodoListsProps> = ({
     removeTask,
     tasks
 }) => {
-    const handleOnKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    const handleOnKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
         // INFO: ENTER Key
         if (e.keyCode !== 13) return;
 

@@ -1,4 +1,4 @@
-import React, { FormEvent } from 'react';
+import React, { FormEvent, KeyboardEvent } from 'react';
 import TodoLists, { Task } from '~/components/TodoLists';
 import { useTodo, useTodoList } from '~/hooks/todo';
 
@@ -32,7 +32,7 @@ const Todo: React.FC = () => {
         e.preventDefault();
     };
 
-    const handleOnKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    const handleOnKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
         // INFO: ENTER Key
         if (e.keyCode !== 13) return;
 
