@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { FormEvent } from 'react';
 import TodoLists, { Task } from '~/components/TodoLists';
 import { useTodo, useTodoList } from '~/hooks/todo';
 
@@ -28,6 +28,10 @@ const Todo: React.FC = () => {
     // タスク一覧
     const tasks = useTodoList(initialTasksState);
 
+    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+    };
+
     return (
         <>
             <main>
@@ -40,7 +44,7 @@ const Todo: React.FC = () => {
                     />
                 )}
 
-                <form className="Form">
+                <form className="Form" onSubmit={handleSubmit}>
                     <input
                         type="text"
                         className="Input-text"
