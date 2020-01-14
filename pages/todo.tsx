@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { FormEvent, KeyboardEvent } from 'react';
 import TodoLists, { Task } from '~/components/TodoLists';
+import { useTodo, useTodoList } from '~/hooks/todo';
 
-const initialState: Task[] = [
+const initialTasksState: Task[] = [
     {
         text: '豚肉を買う',
         checked: true
@@ -21,35 +22,54 @@ const initialState: Task[] = [
 ];
 
 const Todo: React.FC = () => {
-    const [tasks, setTasks] = useState(initialState); // タスク一覧
-    const [text, setText] = useState(''); // 入力フォームの一時保管用
+    // 入力フォームの一時保管用
+    const todo = useTodo('');
 
-    const addTask = (text?: string) => {
-        if (!text) return;
+    // タスク一覧
+    const tasks = useTodoList(initialTasksState);
 
-        const task: Task = { text, checked: false };
-        setTasks([...tasks, task]);
-        setText('');
+    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+    };
+
+    const handleOnKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+        // INFO: ENTER Key
+        if (e.keyCode !== 13) return;
+
+        tasks.add(todo.value);
+        todo.reset();
     };
 
     return (
         <>
             <main>
                 <h1>今日のやること</h1>
-                {tasks.length > 0 && <TodoLists tasks={tasks} />}
+                {tasks.list.length > 0 ? (
+                    <TodoLists
+                        tasks={tasks.list}
+                        editTask={tasks.edit}
+                        removeTask={tasks.remove}
+                    />
+                ) : (
+                    <p className="Text">タスクはありません！</p>
+                )}
 
-                <form className="Form">
+                <form className="Form" onSubmit={handleSubmit}>
                     <input
                         type="text"
                         className="Input-text"
-                        value={text}
+                        value={todo.value}
                         placeholder="タスクを追加しよう!!"
-                        onChange={e => setText(e.target.value)}
+                        onChange={todo.change}
+                        onKeyDown={handleOnKeyDown}
                     />
                     <button
                         type="button"
                         className="Button"
-                        onClick={() => addTask(text)}
+                        onClick={() => {
+                            tasks.add(todo.value);
+                            todo.reset();
+                        }}
                     >
                         タスクを追加
                     </button>
@@ -62,6 +82,9 @@ const Todo: React.FC = () => {
                     max-width: 600px;
                     margin: 0 auto;
                     padding-top: 20px;
+                }
+                .Text {
+                    padding: 1em 0;
                 }
                 .Form {
                     height: 48px;
@@ -77,11 +100,14 @@ const Todo: React.FC = () => {
                     padding: 0 12px;
                     margin-right: 12px;
                     border: solid 1px #ccc;
+                    border-radius: 4px;
                 }
                 .Button {
                     appearance: none;
                     -webkit-appearance: none;
-                    border: none;
+                    border-radius: 4px;
+                    border: 0;
+                    padding: 0.5em 1em;
                     background: #fbd246;
                     outline-color: #ffa400;
                 }
