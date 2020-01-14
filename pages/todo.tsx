@@ -44,12 +44,14 @@ const Todo: React.FC = () => {
         <>
             <main>
                 <h1>今日のやること</h1>
-                {tasks.list.length > 0 && (
+                {tasks.list.length > 0 ? (
                     <TodoLists
                         tasks={tasks.list}
                         handleEditTask={tasks.edit}
                         handleRemoveTask={tasks.remove}
                     />
+                ) : (
+                    <p className="Text">タスクはありません！</p>
                 )}
 
                 <form className="Form" onSubmit={handleSubmit}>
@@ -80,6 +82,9 @@ const Todo: React.FC = () => {
                     max-width: 600px;
                     margin: 0 auto;
                     padding-top: 20px;
+                }
+                .Text {
+                    padding: 1em 0;
                 }
                 .Form {
                     height: 48px;
