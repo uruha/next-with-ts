@@ -44,7 +44,7 @@ const TodoLists: React.FC<TodoListsProps> = ({
                                 className="Text"
                                 type="text"
                                 defaultValue={task.text}
-                                onKeyDown={e => handleOnKeyDown(e)}
+                                onKeyDown={handleOnKeyDown}
                                 onBlur={e =>
                                     editTask(index, {
                                         text: e.target.value,
