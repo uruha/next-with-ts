@@ -11,7 +11,7 @@
 - [How to use](#how-to-use)
 - [Test policy](#test-policy)
   - [Component](#component)
-  - [Redux / Redux-saga](#redux-redux-saga)
+  - [Redux / Redux-saga](#redux--redux-saga)
   - [Others](#others)
 
 
@@ -148,12 +148,12 @@ Mainly use [testing-library/react](https://github.com/testing-library/react-test
 
 ### Redux / Redux-saga
 #### Action [priority: *LOW*]
-Normaly simple unit testing.
+Normaly **simple unit testing**.
 Because of actions is pure function and have types for I/O,
 If types is safe, there is without having to do little testing.
 
 #### Reducer [priority: *MIDDLE*]
-Reducer testing have two types, unit and snapshot testing.
+Reducer testing have two types, **unit** and **snapshot** testing.
 Unit testing is compare initial state to updated state.
 Snapshot testing is check the difference visually for target state.
 
