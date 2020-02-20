@@ -87,30 +87,30 @@ Business logic concentrates on Saga tasks.
 ## Directory
 ```
     .
-    ?? docker
-    ?   ?? app          # FrontEnd App
-    ?   ?? web          # nginx (proxy)
-    ?
-    ?? pages            # web pages
-    ?   ?? api          # BFF api
-    ?
-    ?? server           # node.js web server
-    ?
-    ?? src
-        ?? actions      # redux: action
-        ?? components   # react: component
-        ?? hooks        # react: hooks
-        ?? pages        # ? only next.js pages testing
-        ?? reducers     # redux: reducer
-        ?? sagas        # redux: redux-saga middleware
-        ?? service      # my libs | utils
-        ?? store        # redux: configure store
+    ├─ docker           # 
+    │   ├─ app          # FrontEnd App
+    │   └─ web          # nginx (proxy)
+    │       
+    ├─ pages            # web pages
+    │   └─ api          # BFF api
+    │       
+    ├─ server           # node.js web server
+    │   
+    └─ src              # 
+        ├─ actions      # redux: action
+        ├─ components   # react: component
+        ├─ hooks        # react: hooks
+        ├─ pages        # only next.js pages testing
+        ├─ reducers     # redux: reducer
+        ├─ sagas        # redux: redux-saga middleware
+        ├─ service      # my libs | utils
+        └─ store        # redux: configure store
 ```
 The testing directory is distributed in parallel with the directory that has each function.
 ```
     .
-    ?? hoge
-    ?   ?? __test__ # hoge testing directory
+    ├─ hoge
+    │   ├─ __test__ # hoge testing directory
 ```
 
 ## Environment
