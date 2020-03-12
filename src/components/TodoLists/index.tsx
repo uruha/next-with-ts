@@ -56,7 +56,7 @@ const TodoLists: React.FC<TodoListsProps> = ({
                                 readOnly={!isEditable}
                             />
                         </label>
-                        {!isEditable ? null : (
+                        {isEditable && (
                             <button
                                 className="Button"
                                 onClick={() => removeTask(index)}
