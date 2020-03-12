@@ -1,25 +1,8 @@
-import React, { FormEvent, KeyboardEvent } from 'react';
+import React, { FormEvent, KeyboardEvent, useState } from 'react';
 import TodoLists, { Task } from '~/components/TodoLists';
 import { useTodo, useTodoList } from '~/hooks/todo';
 
-const initialTasksState: Task[] = [
-    {
-        text: '豚肉を買う',
-        checked: true
-    },
-    {
-        text: '定期券を買う',
-        checked: true
-    },
-    {
-        text: '本を買う',
-        checked: false
-    },
-    {
-        text: '家の周りをランニングする',
-        checked: false
-    }
-];
+const initialTasksState: Task[] = [];
 
 const Todo: React.FC = () => {
     // 入力フォームの一時保管用
@@ -27,6 +10,9 @@ const Todo: React.FC = () => {
 
     // タスク一覧
     const tasks = useTodoList(initialTasksState);
+
+    // 編集モードかどうかのフラグ
+    const [isEditable, setEditable] = useState(false);
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -40,15 +26,28 @@ const Todo: React.FC = () => {
         todo.reset();
     };
 
+    const hasTaskList = tasks.list.length > 0;
+
     return (
         <>
             <main>
-                <h1>今日のやること</h1>
-                {tasks.list.length > 0 ? (
+                <div className="Top">
+                    <h1>今日のやること</h1>
+                    {!hasTaskList ? null : (
+                        <button
+                            className="Top-button"
+                            onClick={() => setEditable(!isEditable)}
+                        >
+                            {isEditable ? '保存' : '編集'}
+                        </button>
+                    )}
+                </div>
+                {hasTaskList ? (
                     <TodoLists
                         tasks={tasks.list}
                         editTask={tasks.edit}
                         removeTask={tasks.remove}
+                        isEditable={isEditable}
                     />
                 ) : (
                     <p className="Text">タスクはありません！</p>
@@ -77,6 +76,19 @@ const Todo: React.FC = () => {
             </main>
 
             <style jsx>{`
+                .Top {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                }
+                .Top-button {
+                    font-size: 12px;
+                    appearance: none;
+                    padding: 0.5em 1em;
+                    border: 0;
+                    border-radius: 4px;
+                    background: #ccc;
+                }
                 main {
                     width: 80%;
                     max-width: 600px;

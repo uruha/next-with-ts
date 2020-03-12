@@ -5,16 +5,18 @@ export type Task = {
     checked: boolean;
 };
 
-interface TodoListsProps {
+type TodoListsProps = {
     tasks: Task[];
     editTask: (index: number, task: Task) => void;
     removeTask: (index: number) => void;
-}
+    isEditable: boolean;
+};
 
 const TodoLists: React.FC<TodoListsProps> = ({
     editTask,
     removeTask,
-    tasks
+    tasks,
+    isEditable
 }) => {
     const handleOnKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
         // INFO: ENTER Key
@@ -51,14 +53,17 @@ const TodoLists: React.FC<TodoListsProps> = ({
                                         checked: task.checked
                                     })
                                 }
+                                readOnly={!isEditable}
                             />
                         </label>
-                        <button
-                            className="Button"
-                            onClick={() => removeTask(index)}
-                        >
-                            削除
-                        </button>
+                        {!isEditable ? null : (
+                            <button
+                                className="Button"
+                                onClick={() => removeTask(index)}
+                            >
+                                削除
+                            </button>
+                        )}
                     </li>
                 ))}
             </ul>
@@ -74,10 +79,20 @@ const TodoLists: React.FC<TodoListsProps> = ({
                     align-items: center;
                     flex: 1 1 0;
                 }
+                .Todo-list_item [aria-checked='true'] + .Text {
+                    text-decoration: line-through;
+                }
                 .Todo-list_item .Text {
+                    font-size: 14px;
                     margin: 0.5em;
                     padding: 1em;
                     flex-grow: 1;
+                }
+                .Todo-list_item [readonly].Text {
+                    border: 0;
+                    outline: 0;
+                    padding: calc(1em + 2px); // Border分の余白を調整
+                    cursor: default;
                 }
                 .Todo-list_item .Text:hover {
                     cursor: pointer;
