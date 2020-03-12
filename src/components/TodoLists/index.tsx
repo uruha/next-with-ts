@@ -5,7 +5,7 @@ export type Task = {
     checked: boolean;
 };
 
-type TodoListsProps = {
+export type TodoListsProps = {
     tasks: Task[];
     editTask: (index: number, task: Task) => void;
     removeTask: (index: number) => void;
