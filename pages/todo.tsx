@@ -33,7 +33,7 @@ const Todo: React.FC = () => {
             <main>
                 <div className="Top">
                     <h1>今日のやること</h1>
-                    {!hasTaskList ? null : (
+                    {hasTaskList && (
                         <button
                             className="Top-button"
                             onClick={() => setEditable(!isEditable)}
