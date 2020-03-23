@@ -1,0 +1,14 @@
+name: build
+on:
+  pull_request:
+    types: [opend, synchronize]
+jobs:
+  build:
+    name: build docker image
+    runs-on: macOS-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Run build image
+        run: |
+          docker build -t BUILD ./dokcer/app
