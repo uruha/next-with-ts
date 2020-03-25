@@ -11,4 +11,4 @@ jobs:
         uses: actions/checkout@v1
       - name: Run build image
         run: |
-          docker build -t build:latest -f docker/app/Dockerfile/ docker/app/
+          docker build -t build:test -f docker/app/Dockerfile/ docker/app/
