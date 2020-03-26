@@ -1,4 +1,7 @@
-FROM node:12.13-alpine
+#=================
+# development image
+#=================
+FROM node:12.14.1-alpine AS development
 
 WORKDIR /app
 
@@ -13,4 +16,23 @@ COPY . ./
 
 EXPOSE 3000
 
-CMD ["npm", "run", "dev"]
+#=================
+# production image
+# CI building test image
+#=================
+FROM node:12.14.1-alpine
+
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm install -g npm && \
+    npm install --production
+
+ENV NODE_ENV=production
+
+COPY . ./
+RUN npm run build
+
+EXPOSE 3000
+
+CMD ["npm", "run", "start"]
