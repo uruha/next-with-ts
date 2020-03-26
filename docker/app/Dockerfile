@@ -20,7 +20,7 @@ EXPOSE 3000
 # production image
 # CI building test image
 #=================
-FROM node:12.14.1-alpine
+FROM node:12.14.1-alpine AS production
 
 WORKDIR /app
 
