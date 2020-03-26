@@ -1,7 +1,7 @@
 name: build
 on:
   pull_request:
-    types: [opend, synchronize]
+    types: [opened, synchronize]
 jobs:
   build:
     name: build docker image
