@@ -5,6 +5,7 @@ services:
     build:
       context: .
       dockerfile: ./docker/app/Dockerfile
+      target: development
       args:
         BUILD_ENV: development
     command: sh -c "npm install && npm run dev"
