@@ -4,7 +4,7 @@ on:
     types: [opend, synchronize]
 jobs:
   build:
-    name: docker image
+    name: build docker image
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
