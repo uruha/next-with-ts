@@ -49,6 +49,10 @@ Business logic concentrates on Saga tasks.
     2. It is also possible to manipulate the value retrieved from `State` in the task
     3. However, state must be updated via `Action => Reducer` (does not update `State` directly with the manipulated value)
 
+<img src="./docs/images/type.png" width="80%">
+
+![flux flow](./docs/images/flux.png)
+
 ### 3. Type annotation
 - Use typescript
 
@@ -88,22 +92,22 @@ Business logic concentrates on Saga tasks.
 ```
     .
     ├─ docker           # 
-    │   ├─ app          # FrontEnd App
+    │   ├─ app          # FrontEnd App (multi stage build)
     │   └─ web          # nginx (proxy)
-    │       
+    │
     ├─ pages            # web pages
     │   └─ api          # BFF api
-    │       
-    ├─ server           # node.js web server
-    │   
+    │
+    ├─ server           # web server
+    │
     └─ src              # 
         ├─ actions      # redux: action
         ├─ components   # react: component
         ├─ hooks        # react: hooks
         ├─ pages        # only next.js pages testing
         ├─ reducers     # redux: reducer
-        ├─ sagas        # redux: redux-saga middleware
-        ├─ service      # my libs | utils
+        ├─ sagas        # redux[middleware]: redux-saga
+        ├─ service      # libs | utils
         └─ store        # redux: configure store
 ```
 The testing directory is distributed in parallel with the directory that has each function.
@@ -115,8 +119,11 @@ The testing directory is distributed in parallel with the directory that has eac
 
 ## Environment
 ```
-- node >= 12.13.x
-- next >= 9.1.4
+- node.js >= 12.14.1
+- next.js >= 9.3.1
+- docker
+  - engine >= 19.03.x
+  - compose >= 3.6
 ```
 
 ## How to use
