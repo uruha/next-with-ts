@@ -49,6 +49,10 @@ Business logic concentrates on Saga tasks.
     2. It is also possible to manipulate the value retrieved from `State` in the task
     3. However, state must be updated via `Action => Reducer` (does not update `State` directly with the manipulated value)
 
+<img src="./docs/images/type.png" width="80%">
+
+![flux flow](./docs/images/flux.png)
+
 ### 3. Type annotation
 - Use typescript
 
