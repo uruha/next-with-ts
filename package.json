@@ -37,7 +37,7 @@
         "koa-helmet": "^5.2.0",
         "koa-router": "^8.0.8",
         "module-alias": "^2.2.2",
-        "next": "^9.3.1",
+        "next": "^9.3.2",
         "next-redux-wrapper": "^5.0.0",
         "react": "^16.13.1",
         "react-dom": "^16.13.1",
