@@ -3,14 +3,12 @@ import { FormEvent } from 'react';
 import useEmail from '~/hooks/signin/useEmail';
 import usePassword from '~/hooks/signin/usePassword';
 import Router from 'next/router';
+import http from '~/lib/http';
 
 import { useDispatch } from 'react-redux';
 import { accountActions } from '~/actions/account';
 
-import fetch from 'isomorphic-unfetch';
-
 import { SigninRequest } from '~/modelTypes';
-import { API_BASE_URL } from '~/config';
 
 const Signin: React.FC = () => {
     const email = useEmail('');
@@ -25,8 +23,7 @@ const Signin: React.FC = () => {
         };
 
         try {
-            const res = await fetch(`${API_BASE_URL}/api/signin`, {
-                method: 'POST',
+            const res = await http.post('/api/signin', {
                 body: JSON.stringify(signinRequest)
             });
 
