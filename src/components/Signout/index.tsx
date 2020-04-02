@@ -1,13 +1,10 @@
 import * as React from 'react';
-import fetch from 'isomorphic-unfetch';
-import { API_BASE_URL } from '~/config';
+import http from '~/lib/http';
 
 const Signout: React.FC = () => {
     const handleSignout = async () => {
         try {
-            const res = await fetch(`${API_BASE_URL}/api/signout`, {
-                method: 'POST'
-            });
+            const res = await http.post('/api/signout');
 
             if (res.status === 204) {
                 window.location.href = '/';
