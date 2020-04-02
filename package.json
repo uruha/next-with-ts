@@ -9,7 +9,7 @@
     "scripts": {
         "dev": "nodemon",
         "build": "next build && tsc --project tsconfig.server.json",
-        "start": "cross-env NODE_ENV=production node dist/index.js",
+        "start": "node dist/index.js",
         "type:check": "tsc",
         "lint:check": "eslint . --ext .ts,.tsx",
         "lint:fmt": "eslint . --fix --ext .ts,.tsx",
@@ -45,11 +45,16 @@
         "redux": "^4.0.5",
         "redux-logger": "^3.0.6",
         "redux-saga": "^1.1.3",
-        "ts-node": "^8.8.1",
-        "typescript": "^3.8.3",
         "universal-cookie": "^4.0.3",
-        "babel-plugin-module-resolver": "^4.0.0",
+        "babel-plugin-module-resolver": "^4.0.0"
+    },
+    "devDependencies": {
+        "@testing-library/react": "^10.0.1",
+        "@testing-library/react-hooks": "^3.2.1",
         "@types/bunyan": "^1.8.6",
+        "@types/enzyme": "^3.10.5",
+        "@types/enzyme-adapter-react-16": "^1.0.6",
+        "@types/jest": "^25.1.4",
         "@types/jwt-decode": "^2.2.1",
         "@types/koa": "^2.11.2",
         "@types/koa-helmet": "^3.1.2",
@@ -59,14 +64,7 @@
         "@types/react-dom": "^16.9.5",
         "@types/react-redux": "^7.1.7",
         "@types/redux-logger": "^3.0.7",
-        "@types/universal-cookie": "^2.2.0"
-    },
-    "devDependencies": {
-        "@testing-library/react": "^10.0.1",
-        "@testing-library/react-hooks": "^3.2.1",
-        "@types/enzyme": "^3.10.5",
-        "@types/enzyme-adapter-react-16": "^1.0.6",
-        "@types/jest": "^25.1.4",
+        "@types/universal-cookie": "^2.2.0",
         "@typescript-eslint/eslint-plugin": "^2.25.0",
         "@typescript-eslint/parser": "^2.25.0",
         "@typescript-eslint/typescript-estree": "^2.25.0",
@@ -85,7 +83,9 @@
         "prettier": "^2.0.2",
         "redux-saga-test-plan": "^4.0.0-rc.3",
         "snapshot-diff": "^0.7.0",
-        "ts-jest": "^25.2.1"
+        "ts-jest": "^25.2.1",
+        "ts-node": "^8.8.1",
+        "typescript": "^3.8.3"
     },
     "_moduleAliases": {
         "~": "src",
