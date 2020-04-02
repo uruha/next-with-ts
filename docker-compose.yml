@@ -12,6 +12,8 @@ services:
     volumes:
       - .:/app:delegated
       - node_modules:/app/node_modules:delegated
+    environment:
+      API_BASE_URL: http://localhost
 
   nginx:
     build: ./docker/web

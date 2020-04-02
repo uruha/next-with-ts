@@ -10,6 +10,7 @@ import { accountActions } from '~/actions/account';
 import fetch from 'isomorphic-unfetch';
 
 import { SigninRequest } from '~/modelTypes';
+import { API_BASE_URL } from '~/config';
 
 const Signin: React.FC = () => {
     const email = useEmail('');
@@ -24,7 +25,7 @@ const Signin: React.FC = () => {
         };
 
         try {
-            const res = await fetch('/api/signin', {
+            const res = await fetch(`${API_BASE_URL}/api/signin`, {
                 method: 'POST',
                 body: JSON.stringify(signinRequest)
             });

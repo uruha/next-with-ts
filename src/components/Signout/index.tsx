@@ -1,10 +1,11 @@
 import * as React from 'react';
 import fetch from 'isomorphic-unfetch';
+import { API_BASE_URL } from '~/config';
 
 const Signout: React.FC = () => {
     const handleSignout = async () => {
         try {
-            const res = await fetch('/api/signout', {
+            const res = await fetch(`${API_BASE_URL}/api/signout`, {
                 method: 'POST'
             });
 
