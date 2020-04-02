@@ -9,7 +9,7 @@
     "scripts": {
         "dev": "nodemon",
         "build": "next build && tsc --project tsconfig.server.json",
-        "start": "node dist/index.js",
+        "start": "cross-env NODE_ENV=production node dist/index.js",
         "type:check": "tsc",
         "lint:check": "eslint . --ext .ts,.tsx",
         "lint:fmt": "eslint . --fix --ext .ts,.tsx",
