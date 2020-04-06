@@ -13,13 +13,11 @@
         "type:check": "tsc",
         "lint:check": "eslint . --ext .ts,.tsx",
         "lint:fmt": "eslint . --fix --ext .ts,.tsx",
-        "precommit": "lint-staged",
         "test": "jest"
     },
     "lint-staged": {
         "*.{ts,tsx}": [
-            "eslint . --ext .ts,.tsx",
-            "git add"
+            "eslint . --ext .ts,.tsx --fix"
         ]
     },
     "keywords": [
