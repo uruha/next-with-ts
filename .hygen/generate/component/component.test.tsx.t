@@ -21,4 +21,3 @@ describe('<%= name %>', () => {
         expect(container).not.toBeNull();
     });
 });
-
