@@ -1,5 +1,5 @@
 ---
-to: src/components/<%= h.changeCase.pascal(name) %>/__test__/<%= h.changeCase.pascal(name) %>.test.tsx
+to: 'src/<%= type %><%= type === "pages" ? `/__test__/${name}` : `/${h.changeCase.pascal(name)}/__test__/${h.changeCase.pascal(name)}` %>.test.tsx'
 ---
 <% Name = h.changeCase.pascal(name) %>
 /* eslint-env jest */
