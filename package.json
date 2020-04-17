@@ -14,7 +14,7 @@
         "lint:check": "eslint . --ext .ts,.tsx",
         "lint:fmt": "eslint . --fix --ext .ts,.tsx",
         "test": "jest",
-        "gen": "hygen generate"
+        "gen": "hygen generate component"
     },
     "lint-staged": {
         "*.{ts,tsx}": [
