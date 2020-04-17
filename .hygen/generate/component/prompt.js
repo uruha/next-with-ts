@@ -3,7 +3,7 @@ module.exports = [
         type: 'select',
         name: 'type',
         message: 'What is the component type?',
-        choices: ['pages', 'components']
+        choices: ['pages', 'default']
     },
     {
         type: 'input',
