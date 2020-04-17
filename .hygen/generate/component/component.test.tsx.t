@@ -1,5 +1,5 @@
 ---
-to: 'src/<%= type %><%= type === "pages" ? `/__test__/${name}` : `/${h.changeCase.pascal(name)}/__test__/${h.changeCase.pascal(name)}` %>.test.tsx'
+to: 'src/<%= type === "pages" ? `pages/__test__/${name}` : `components/${h.changeCase.pascal(name)}/__test__/${h.changeCase.pascal(name)}` %>.test.tsx'
 ---
 /* eslint-env jest */
 import * as React from 'react';
