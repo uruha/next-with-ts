@@ -1,3 +1,3 @@
 module.exports = {
-    templates: `${__dirname}/hygen_temp`
+    templates: `${__dirname}/.hygen`
 }
