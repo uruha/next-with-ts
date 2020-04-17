@@ -1,9 +1,8 @@
 ---
 to: '<%= type === "pages" ? `${type}/${name}.tsx` : `src/${type}/${h.changeCase.pascal(name)}/index.tsx` %>'
 ---
-<% Name = h.changeCase.pascal(name) %>
 import * as React from 'react';
-
+<% Name = h.changeCase.pascal(name) %>
 export type <%= Name %>Props = {};
 
 const <%= Name %>: React.FC<<%= Name %>Props> = () => {
