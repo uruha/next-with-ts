@@ -1,17 +1,22 @@
 ---
-to: "<%= type === 'action' ? `src/actionTypes/${name}.ts` : null  %>"
-# to: src/actionTypes/<%= name %>.ts
+to: src/actionTypes/<%= name %>.ts
 ---
 <%
     ActionName = h.changeCase.pascal(name);
     ActionTypes = ActionName + 'ActionTypes';
-    GET_ACTION = 'GET_' + h.changeCase.upper(name);
-    GetActionType = 'Get' + ActionName + 'Action';
+    ACTION =  h.changeCase.upper(name);
+    ActionType = ActionName + 'Action';
 -%>
-import { <%= GET_ACTION %> } from '~/constant';
+import { GET_<%= ACTION %>, UPDATE_<%= ACTION %> } from '~/constant';
+import { <%= Name %>State } from '~/stateTypes';
 
-interface <%= GetActionType %> {
-    type: typeof <%= GET_ACTION %>;
+interface Get<%= ActionType %> {
+    type: typeof GET_<%= ACTION %>;
 }
 
-export type <%= ActionTypes %> = <%= GetActionType %>;
+interface Update<%= ActionType %> {
+    type: typeof UPDATE_<%= ACTION %>;
+    payload: <%= Name %>State;
+}
+
+export type <%= ActionTypes %> = Get<%= ActionType %> | Update<%= ActionType %>;

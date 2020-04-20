@@ -1,5 +1,5 @@
 ---
-to: "<%= type === 'action' ? `src/actionTypes/index.ts` : null  %>"
+to: src/actionTypes/index.ts
 inject: true
 append: true
 skip_if: <%= name %>

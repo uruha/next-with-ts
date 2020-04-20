@@ -1,14 +1,8 @@
 module.exports = [
     {
-        type: 'select',
-        name: 'type',
-        message: 'What is the redux type?',
-        choices: ['reducer', 'action']
-    },
-    {
         type: 'input',
         name: 'name',
-        message: 'What is the component name?',
+        message: 'What is the base name of reducer, action?',
         validate: answer => {
             if (answer !== '') {
                 return true;
