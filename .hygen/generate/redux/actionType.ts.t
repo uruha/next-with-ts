@@ -1,10 +1,11 @@
 ---
-to: src/actionTypes/<%= actionName %>.ts
+to: "<%= type === 'action' ? `src/actionTypes/${name}.ts` : null  %>"
+# to: src/actionTypes/<%= name %>.ts
 ---
 <%
-    ActionName = h.changeCase.pascal(actionName);
+    ActionName = h.changeCase.pascal(name);
     ActionTypes = ActionName + 'ActionTypes';
-    GET_ACTION = 'GET_' + h.changeCase.upper(actionName);
+    GET_ACTION = 'GET_' + h.changeCase.upper(name);
     GetActionType = 'Get' + ActionName + 'Action';
 -%>
 import { <%= GET_ACTION %> } from '~/constant';
