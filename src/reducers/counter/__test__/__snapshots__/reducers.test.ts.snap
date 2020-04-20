@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Counter reducer update testing 1`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+  Object {
+-   \\"count\\": 0,
++   \\"count\\": 1,
+  }"
+`;
