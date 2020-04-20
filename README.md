@@ -87,6 +87,9 @@ Business logic concentrates on Saga tasks.
             - Reducer testing
         - [Redux-saga-test-plan](https://github.com/jfairbank/redux-saga-test-plan)
             - Saga task testing
+- Code Generator
+    - [Hygen](http://www.hygen.io/)
+        - Generating code of basic component
 
 ## Directory
 ```
