@@ -1,9 +1,14 @@
 ---
 to: src/actions/<%= actionName %>/index.ts
 ---
-import { GET_<%= h.changeCase.upper(actionName) %> } from '~/constant';
-import { <%= h.changeCase.pascal(actionName) %>ActionTypes } from '~/actionTypes';
+<%
+    GET_ACTION = 'GET_' + h.changeCase.upper(actionName);
+    ActionName = h.changeCase.pascal(actionName);
+    ActionType = ActionName + 'ActionTypes';
+-%>
+import { <%= GET_ACTION %> } from '~/constant';
+import { <%= ActionType %> } from '~/actionTypes';
 
-export const get<%=  h.changeCase.pascal(actionName) %> = (): <%= h.changeCase.pascal(actionName) %>ActionTypes => ({
-    type: GET_<%= h.changeCase.upper(actionName) %>
+export const get<%= ActionName %> = (): <%= ActionType %> => ({
+    type: <%= GET_ACTION %>
 });

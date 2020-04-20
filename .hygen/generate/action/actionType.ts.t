@@ -1,10 +1,16 @@
 ---
 to: src/actionTypes/<%= actionName %>.ts
 ---
-import { GET_<%= h.changeCase.upper(actionName) %> } from '~/constant';
-<% GetActionType = 'Get' + h.changeCase.pascal(actionName) + 'Action' %>
+<%
+    ActionName = h.changeCase.pascal(actionName);
+    ActionTypes = ActionName + 'ActionTypes';
+    GET_ACTION = 'GET_' + h.changeCase.upper(actionName);
+    GetActionType = 'Get' + ActionName + 'Action';
+-%>
+import { <%= GET_ACTION %> } from '~/constant';
+
 interface <%= GetActionType %> {
-    type: typeof GET_<%= h.changeCase.upper(actionName) %>;
+    type: typeof <%= GET_ACTION %>;
 }
 
-export type <%= h.changeCase.pascal(actionName) %>ActionTypes = <%= GetActionType %>;
+export type <%= ActionTypes %> = <%= GetActionType %>;
