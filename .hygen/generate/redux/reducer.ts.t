@@ -27,7 +27,6 @@ export const <%= name %> = (
             return { ...state, ...action.payload };
 
         default:
-            const _exhaustiveCheck: never = action;
-            throw new Error(_exhaustiveCheck);
+            return state;
     }
 };
