@@ -20,7 +20,5 @@ export const counter = (
 
         default:
             return state;
-        // const _exhaustiveCheck: never = action;
-        // throw new Error(_exhaustiveCheck);
     }
 };
