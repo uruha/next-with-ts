@@ -4,11 +4,11 @@ to: src/reducers/<%= name %>/index.ts
 <%
     Name = h.changeCase.pascal(name);
     NAME = h.changeCase.upper(name);
-    ActionType = Name + 'ActionTypes';
+    ActionTypes = Name + 'ActionTypes';
     State = Name + 'State';
 -%>
 import { GET_<%= NAME %>, UPDATE_<%= NAME %> } from '~/constant';
-import { <%= ActionType %> } from '~/actionTypes';
+import { <%= ActionTypes %> } from '~/actionTypes';
 import { <%= State  %> } from '~/stateTypes';
 
 export const initial<%= Name %>: <%= State  %> = {
@@ -17,7 +17,7 @@ export const initial<%= Name %>: <%= State  %> = {
 
 export const <%= name %> = (
     state = initial<%= Name %>,
-    action: <%= ActionType %>
+    action: <%= ActionTypes %>
 ): <%= State  %> => {
     switch (action.type) {
         case GET_<%= NAME %>:

@@ -4,7 +4,7 @@ inject: true
 append: true
 skip_if: <%= h.changeCase.upper(name) %>
 ---
-<% ACTION = h.changeCase.upper(name) -%>
+<% NAME = h.changeCase.upper(name) -%>
 
-export const GET_<%= ACTION %> = 'GET_<%= ACTION %>';
-export const UPDATE_<%= ACTION %> = 'UPDATE_<%= ACTION %>';
+export const GET_<%= NAME %> = 'GET_<%= NAME %>';
+export const UPDATE_<%= NAME %> = 'UPDATE_<%= NAME %>';

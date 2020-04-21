@@ -4,18 +4,18 @@ to: src/actions/<%= name %>/index.ts
 <%
     Name = h.changeCase.pascal(name);
     NAME =  h.changeCase.upper(name);
-    ActionType = Name + 'ActionTypes';
+    ActionTypes = Name + 'ActionTypes';
     State = Name + 'State';
 -%>
 import { GET_<%= NAME %>, UPDATE_<%= NAME %> } from '~/constant';
-import { <%= ActionType %> } from '~/actionTypes';
+import { <%= ActionTypes %> } from '~/actionTypes';
 import { <%= State %> } from '~/stateTypes';
 
-export const get<%= Name %> = (): <%= ActionType %> => ({
+export const get<%= Name %> = (): <%= ActionTypes %> => ({
     type: GET_<%= NAME %>
 });
 
-export const update<%= Name %> = (payload: <%= State %>): <%= ActionType %> => ({
+export const update<%= Name %> = (payload: <%= State %>): <%= ActionTypes %> => ({
     type: UPDATE_<%= NAME %>,
     payload,
 });
