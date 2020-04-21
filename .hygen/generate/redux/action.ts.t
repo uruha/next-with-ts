@@ -2,21 +2,20 @@
 to: src/actions/<%= name %>/index.ts
 ---
 <%
-    GET_ACTION = 'GET_' + h.changeCase.upper(name);
-    UPDATE_ACTION = 'UPDATE_' + h.changeCase.upper(name);
-    ActionName = h.changeCase.pascal(name);
-    ActionType = ActionName + 'ActionTypes';
-    State = ActionName + 'State';
+    Name = h.changeCase.pascal(name);
+    NAME =  h.changeCase.upper(name);
+    ActionType = Name + 'ActionTypes';
+    State = Name + 'State';
 -%>
-import { <%= GET_ACTION %>, <%= UPDATE_ACTION %> } from '~/constant';
+import { GET_<%= NAME %>, UPDATE_<%= NAME %> } from '~/constant';
 import { <%= ActionType %> } from '~/actionTypes';
 import { <%= State %> } from '~/stateTypes';
 
-export const get<%= ActionName %> = (): <%= ActionType %> => ({
-    type: <%= GET_ACTION %>
+export const get<%= Name %> = (): <%= ActionType %> => ({
+    type: GET_<%= NAME %>
 });
 
-export const update<%= ActionName %> = (payload: <%= State %>): <%= ActionType %> => ({
-    type: <%= UPDATE_ACTION %>,
+export const update<%= Name %> = (payload: <%= State %>): <%= ActionType %> => ({
+    type: UPDATE_<%= NAME %>,
     payload,
 });
