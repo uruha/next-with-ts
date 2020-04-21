@@ -3,7 +3,7 @@ to: src/actions/<%= name %>/index.ts
 ---
 <%
     Name = h.changeCase.pascal(name);
-    NAME =  h.changeCase.upper(name);
+    NAME = h.changeCase.upper(name);
     ActionTypes = Name + 'ActionTypes';
     State = Name + 'State';
 -%>
