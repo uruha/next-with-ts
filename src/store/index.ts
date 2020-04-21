@@ -1,6 +1,7 @@
 import { createStore, applyMiddleware, Store, Middleware } from 'redux';
 import createSagaMiddleware, { Task, END } from 'redux-saga';
 import { createLogger } from 'redux-logger';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import { rootReducer, RootState } from '~/reducers';
 import rootSaga from '~/sagas';
 import { Dispatch } from 'redux';
@@ -25,10 +26,15 @@ export default (initialState: RootState) => {
     const logger = createLogger();
     middlewares.push(logger);
 
+    const enhancer =
+        process.env.NODE_ENV !== 'production'
+            ? composeWithDevTools(applyMiddleware(...middlewares))
+            : applyMiddleware(...middlewares);
+
     const store = createStore(
         rootReducer,
         initialState,
-        applyMiddleware(...middlewares)
+        enhancer
     ) as StoreWithSaga;
 
     store.runSagaTask = () => {
