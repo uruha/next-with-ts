@@ -7,8 +7,7 @@ import { Provider } from 'react-redux';
 import makeStore from '~/store';
 import { StoreWithSaga } from '~/store';
 
-import { increment } from '~/actions';
-import { accountActions } from '~/actions/account';
+import { accountActions, counterActions } from '~/actions';
 import { getAccountState } from '~/sagas/selectors/account';
 
 interface CustomProps {
@@ -32,7 +31,7 @@ class CustomApp extends App<CustomProps> {
         // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
         // @ts-ignore
         await ctx.store.execSagaTask(ctx.isServer, (dispatch: Dispatch) => {
-            dispatch(increment(1));
+            dispatch(counterActions.increment(1));
         });
 
         return { pageProps };

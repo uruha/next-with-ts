@@ -1,6 +1,6 @@
 import { GET_ACCOUNT, UPDATE_ACCOUNT } from '~/constant';
 import { Account } from '~/modelTypes';
-import { accountActions } from '~/actions/account';
+import { accountActions } from '~/actions';
 
 describe('Account actions', () => {
     it('should create get account action', () => {

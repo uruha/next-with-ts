@@ -6,7 +6,7 @@ to: src/reducers/<%= name %>/__test__/<%= name %>.test.ts
     State = Name + 'State';
 -%>
 import snapshotDiff from 'snapshot-diff';
-import { update<%= Name %> } from '~/actions/<%= name %>';
+import { <%= name %>Actions } from '~/actions';
 
 import { initial<%= Name %>, <%= name %> } from '~/reducers/<%= name %>';
 import { <%= State %> } from '~/stateTypes';
@@ -20,7 +20,7 @@ describe('<%= Name %> reducer', () => {
         expect(
             snapshotDiff(
                 initial<%= Name %>,
-                <%= name %>(initial<%= Name %>, update<%= Name %>(testing<%= Name %>))
+                <%= name %>(initial<%= Name %>, <%= name %>Actions.update<%= Name %>(testing<%= Name %>))
             )
         ).toMatchSnapshot();
     });
