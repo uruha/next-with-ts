@@ -10,5 +10,3 @@ export const updateAccount = (account: Account): AccountActionTypes => ({
     type: UPDATE_ACCOUNT,
     payload: { data: account }
 });
-
-export const accountActions = { getAccount, updateAccount };
