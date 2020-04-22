@@ -89,7 +89,7 @@ Business logic concentrates on Saga tasks.
             - Saga task testing
 - Code Generator
     - [Hygen](http://www.hygen.io/)
-        - Generating code of basic component
+        - Generating code of basic component, redux actions and reducers
 
 ## Directory
 ```
@@ -146,6 +146,14 @@ This project use nginx for reverse proxy and static resource cache control.
 --> |  nginx  | --> |     app      |
     | [proxy] |     | [next + koa] |
     -----------     ----------------
+```
+
+### Code Generator
+you may create React Component / Redux Action, Reducers from Hygen template.
+
+```shell script
+npm run gen component
+npm run gen redux
 ```
 
 ## Test policy

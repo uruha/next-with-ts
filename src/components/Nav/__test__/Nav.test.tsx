@@ -9,7 +9,7 @@ import Nav from '~/components/Nav';
 import { createStore } from 'redux';
 
 describe('Navigation', () => {
-    it('renders navigation list itmes collection', () => {
+    it('renders navigation list items collection', () => {
         const account = {
             data: {
                 email: 'test@example.com',

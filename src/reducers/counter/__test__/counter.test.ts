@@ -2,7 +2,7 @@
 import snapshotDiff from 'snapshot-diff';
 import { counterActions } from '~/actions';
 
-import { counter, initialCounter } from '~/reducers';
+import { counter, initialCounter } from '~/reducers/counter';
 
 describe('Counter reducer', () => {
     it('update testing', () => {
