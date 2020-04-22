@@ -1,4 +1,8 @@
 import * as accountActions from './account';
 import * as counterActions from './counter';
 
-export { accountActions, counterActions };
+// eslint-disable-next-line
+export {
+    accountActions,
+    counterActions,
+};
