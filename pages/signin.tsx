@@ -6,7 +6,7 @@ import Router from 'next/router';
 import http from '~/lib/http';
 
 import { useDispatch } from 'react-redux';
-import { accountActions } from '~/actions/account';
+import { accountActions } from '~/actions';
 
 import { SigninRequest } from '~/modelTypes';
 
