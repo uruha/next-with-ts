@@ -1,19 +1,4 @@
-import { INCREMENT, DECREMENT, UPDATE_COUNT } from '~/constant';
-import { CounterActionTypes } from '~/actionTypes';
+import * as accountActions from './account';
+import * as counterActions from './counter';
 
-export const increment = (number: number): CounterActionTypes => ({
-    type: INCREMENT,
-    payload: number
-});
-
-export const decrement = (number: number): CounterActionTypes => ({
-    type: DECREMENT,
-    payload: number
-});
-
-export const updateCount = (number: number): CounterActionTypes => ({
-    type: UPDATE_COUNT,
-    payload: number
-});
-
-export const counterActions = { increment, decrement, updateCount };
+export { accountActions, counterActions };
