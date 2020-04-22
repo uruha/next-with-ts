@@ -1,5 +1,5 @@
 import snapshotDiff from 'snapshot-diff';
-import { accountActions } from '~/actions/account';
+import { accountActions } from '~/actions';
 
 import { initialAccount, account } from '~/reducers/account';
 import { Account } from '~/modelTypes';
