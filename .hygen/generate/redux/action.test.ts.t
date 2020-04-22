@@ -1,5 +1,5 @@
 ---
-to: src/actions/<%= name %>/<%= name %>.test.ts
+to: src/actions/<%= name %>/__test__/<%= name %>.test.ts
 ---
 <%
     Name = h.changeCase.pascal(name);
@@ -23,12 +23,12 @@ describe('<%= Name %> actions', () => {
 
     it('should create update <%= name %> action', () => {
         const expectedPayload: <%= State %> = {
-            value: 'hoge',
+            value: 'hoge'
         };
         const expectedAction = {
             type: UPDATE_<%= NAME %>,
             payload: {
-                value: expectedPayload.value,
+                value: expectedPayload.value
             }
         };
 
