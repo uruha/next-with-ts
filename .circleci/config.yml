@@ -1,0 +1,53 @@
+version: 2.1
+
+orbs:
+  aws-ecr: circleci/aws-ecr@6.8.2
+  node: circleci/node@2.0
+
+workflows:
+  test:
+    jobs:
+      - node/test:
+          version: 12.16.3
+          filters:
+            branches:
+              ignore: master
+
+  build_and_push_image:
+    jobs:
+      - node/test:
+          version: 12.16.3
+          filters:
+            branches:
+              only: master
+
+      - request-build_and_push:
+          requires:
+            - node/test
+          type: approval
+
+      - aws-ecr/build-and-push-image:
+          name: aws-ecr/build-and-push-app-image
+          requires:
+            - request-build_and_push
+          context: ecr-sample
+          account-url: AWS_ECR_ACCOUNT_URL
+          aws-access-key-id: AWS_ACCESS_KEY_ID
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+          region: AWS_REGION
+          repo: "${REPO_NAME}"
+          tag: "latest-app"
+          dockerfile: "./docker/app/Dockerfile"
+
+      - aws-ecr/build-and-push-image:
+          name: aws-ecr/build-and-push-web-image
+          requires:
+            - request-build_and_push
+          context: ecr-sample
+          account-url: AWS_ECR_ACCOUNT_URL
+          aws-access-key-id: AWS_ACCESS_KEY_ID
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+          region: AWS_REGION
+          repo: "${REPO_NAME}"
+          tag: "latest-web"
+          path: "./docker/web"
