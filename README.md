@@ -156,6 +156,12 @@ npm run gen component
 npm run gen redux
 ```
 
+### Deployment to ECR
+You can choose from two methods
+
+- Github Actions
+- CircleCI
+
 ## Test policy
 ### Component
 Mainly use [testing-library/react](https://github.com/testing-library/react-testing-library), [react-hooks](https://github.com/testing-library/react-hooks-testing-library).
