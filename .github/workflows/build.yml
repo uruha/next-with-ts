@@ -2,7 +2,7 @@ name: build and push images to ECR
 on:
   push:
     branches:
-      - 'master'
+      - 'hogehoge' # Enter any branch name
 
 jobs:
   build:
