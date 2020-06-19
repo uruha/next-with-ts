@@ -28,6 +28,7 @@
     "author": "Kotaro Chiba",
     "license": "MIT",
     "dependencies": {
+        "@koa/router": "^9.0.1",
         "babel-plugin-module-resolver": "^4.0.0",
         "bunyan": "^1.8.12",
         "cross-env": "^7.0.2",
@@ -35,7 +36,6 @@
         "jwt-decode": "^2.2.0",
         "koa": "^2.12.1",
         "koa-helmet": "^5.2.0",
-        "koa-router": "^9.0.1",
         "module-alias": "^2.2.2",
         "next": "^9.4.4",
         "next-redux-wrapper": "^5.0.0",
@@ -58,6 +58,7 @@
         "@types/koa": "^2.11.3",
         "@types/koa-helmet": "^5.2.0",
         "@types/koa-router": "^7.4.1",
+        "@types/koa__router": "^8.0.2",
         "@types/next-redux-wrapper": "^3.0.0",
         "@types/react": "^16.9.38",
         "@types/react-dom": "^16.9.8",
