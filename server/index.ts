@@ -1,5 +1,5 @@
 import Koa, { ParameterizedContext } from 'koa';
-import Router from 'koa-router';
+import Router from '@koa/router';
 import KoaHelmet from 'koa-helmet';
 import next from 'next';
 
@@ -51,13 +51,13 @@ app.prepare()
             ctx.body = JSON.stringify({ uptime: process.uptime() });
         });
 
-        router.get('*', async (ctx: ParameterizedContext<Logger>) => {
+        router.get(/.*/, async (ctx: ParameterizedContext<Logger>) => {
             await ctx.logger.info({ req: ctx.req }, 'REQUEST');
             await handle(ctx.req, ctx.res);
             ctx.respond = false;
         });
 
-        router.post('*', async (ctx: ParameterizedContext<Logger>) => {
+        router.post(/.*/, async (ctx: ParameterizedContext<Logger>) => {
             await ctx.logger.info({ req: ctx.req }, 'REQUEST');
             await handle(ctx.req, ctx.res);
             ctx.respond = false;
