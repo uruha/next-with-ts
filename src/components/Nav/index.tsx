@@ -17,7 +17,11 @@ const Nav: React.FC = () => {
         <nav>
             <ul className="Nav-list">
                 <li>Header</li>
-                <li>link 1</li>
+                <li>
+                    <Link href="/todo">
+                        <a>TODO</a>
+                    </Link>
+                </li>
                 <li>link 2</li>
                 {!hasAccountData && (
                     <li>
