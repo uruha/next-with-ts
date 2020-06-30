@@ -28,7 +28,7 @@ class CustomApp extends App<CustomProps> {
          * Can't extended AppContext to include CustomProps Type,
          * tentatively ignore ctx.store type lint.
          */
-        // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         await ctx.store.execSagaTask(ctx.isServer, (dispatch: Dispatch) => {
             dispatch(counterActions.increment(1));
