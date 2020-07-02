@@ -21,7 +21,7 @@ services:
       - 80:80
     depends_on:
       - app
-    restart: always
+    restart: on-failure
 
 volumes:
   node_modules:
