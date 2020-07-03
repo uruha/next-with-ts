@@ -1,12 +1,8 @@
 /* eslint-env jest */
 import * as React from 'react';
-import { render } from '@testing-library/react';
-
-import { Provider } from 'react-redux';
-import { rootReducer } from '~/reducers';
-
 import Nav from '~/components/Nav';
-import { createStore } from 'redux';
+
+import { renderWithProvider } from '~/lib/testing';
 
 describe('Navigation', () => {
     it('renders navigation list items collection', () => {
@@ -16,12 +12,8 @@ describe('Navigation', () => {
                 nickname: 'Geronimo'
             }
         };
-        const store = createStore(rootReducer, { account });
-        const { container } = render(
-            <Provider store={store}>
-                <Nav />
-            </Provider>
-        );
+
+        const { container } = renderWithProvider(<Nav />, account);
         const lists = container.querySelectorAll('.Nav-list li');
         expect(lists).toHaveLength(4);
     });

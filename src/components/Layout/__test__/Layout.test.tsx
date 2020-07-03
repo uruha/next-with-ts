@@ -1,18 +1,10 @@
 /* eslint-env jest */
 import * as React from 'react';
-import { render, cleanup } from '@testing-library/react';
+import { cleanup } from '@testing-library/react';
 
 import Layout from '~/components/Layout';
-import { createStore } from 'redux';
-import { rootReducer } from '~/reducers';
-import { Provider } from 'react-redux';
 
-const renderWithProvider = (
-    testComponent: React.ReactElement,
-    store = createStore(rootReducer, {})
-) => {
-    return render(<Provider store={store}>{testComponent}</Provider>);
-};
+import { renderWithProvider } from '~/lib/testing';
 
 describe('Layout', () => {
     afterEach(cleanup);
