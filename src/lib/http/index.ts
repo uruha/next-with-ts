@@ -1,4 +1,3 @@
-import fetch from 'isomorphic-unfetch';
 import { API_BASE_URL } from '~/config';
 
 const get = (path: string, options?: RequestInit) =>

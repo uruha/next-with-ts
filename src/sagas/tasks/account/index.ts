@@ -3,8 +3,6 @@ import { GET_ACCOUNT } from '~/constant';
 import { accountActions } from '~/actions';
 import { Account } from '~/modelTypes';
 
-import fetch from 'isomorphic-unfetch';
-
 export function* runRequestGetAccount() {
     try {
         const response = yield call(() => fetch('/api/account'));

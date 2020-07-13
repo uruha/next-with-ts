@@ -32,7 +32,6 @@
         "babel-plugin-module-resolver": "^4.0.0",
         "bunyan": "^1.8.12",
         "cross-env": "^7.0.2",
-        "isomorphic-unfetch": "^3.0.0",
         "jwt-decode": "^2.2.0",
         "koa": "^2.12.1",
         "koa-helmet": "^5.2.0",
