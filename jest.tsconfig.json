@@ -3,7 +3,7 @@
         "allowJs": true,
         "jsx": "react",
         "lib": [
-            "es2017",
+            "es2019",
             "dom"
         ],
         "module": "commonjs",
@@ -17,7 +17,7 @@
         "skipLibCheck": true,
         "sourceMap": false,
         "strict": true,
-        "target": "esnext",
+        "target": "es2019",
         "baseUrl": "./",
         "paths": {
             "~/*": ["src/*"],
