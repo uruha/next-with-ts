@@ -35,6 +35,31 @@
         ],
         "react/prop-types": [
             "off"
+        ],
+        "@typescript-eslint/naming-convention" :[
+            "error",
+            {
+                "selector": "default",
+                "format": ["camelCase"]
+            },
+            {
+                "selector": "variable",
+                "format": ["PascalCase", "camelCase", "UPPER_CASE"],
+                "leadingUnderscore": "allow"
+            },
+            {
+                "selector": "property",
+                "format": ["PascalCase", "camelCase", "UPPER_CASE", "snake_case"]
+            },
+            {
+                "selector": "parameter",
+                "format": ["PascalCase", "camelCase"],
+                "leadingUnderscore": "allow"
+            },
+            {
+                "selector": "typeLike",
+                "format": ["PascalCase"]
+            }
         ]
     },
     "settings": {
