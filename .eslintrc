@@ -21,10 +21,46 @@
     ],
     "rules": {
         "prettier/prettier": "error",
-        "@typescript-eslint/explicit-function-return-type": [0, { "allowExpressions": true }],
-        "@typescript-eslint/explicit-member-accessibility": [2, { "accessibility": "no-public" }],
-        "@typescript-eslint/explicit-module-boundary-types": [0, { "allowTypedFunctionExpressions": false }],
-        "react/prop-types": [0]
+        "@typescript-eslint/explicit-function-return-type": [
+            "off",
+            { "allowExpressions": true }
+        ],
+        "@typescript-eslint/explicit-member-accessibility": [
+            "error",
+            { "accessibility": "no-public" }
+        ],
+        "@typescript-eslint/explicit-module-boundary-types": [
+            "off",
+            { "allowTypedFunctionExpressions": false }
+        ],
+        "react/prop-types": [
+            "off"
+        ],
+        "@typescript-eslint/naming-convention" :[
+            "error",
+            {
+                "selector": "default",
+                "format": ["camelCase"]
+            },
+            {
+                "selector": "variable",
+                "format": ["PascalCase", "camelCase", "UPPER_CASE"],
+                "leadingUnderscore": "allow"
+            },
+            {
+                "selector": "property",
+                "format": ["PascalCase", "camelCase", "UPPER_CASE", "snake_case"]
+            },
+            {
+                "selector": "parameter",
+                "format": ["PascalCase", "camelCase"],
+                "leadingUnderscore": "allow"
+            },
+            {
+                "selector": "typeLike",
+                "format": ["PascalCase"]
+            }
+        ]
     },
     "settings": {
         "react": {
