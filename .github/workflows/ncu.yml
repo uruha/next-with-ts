@@ -1,21 +1,13 @@
 name: ncu
-on: [pull_request]
+on:
+  [push, pull_request]
 jobs:
-  ncu:
-      name: npm check updates
-      runs-on: macOS-latest
-      strategy:
-        matrix:
-          node_version: [12]
-      steps:
-        - name: Checkout
-          uses: actions/checkout@v1
-        - name: Setup node ${{ matrix.node_version }}
-          uses: actions/setup-node@v1
-          with:
-            node-version: ${{ matrix.node_version }}
-  
-        - name: Install and run ncu
-          run: |
-            npm install npm-check-updates
-            npx ncu
+  ncu_report:
+    runs-on: ubuntu-latest
+    name: npm-check-updates report
+    steps:
+      - uses: actions/ncu-report-action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          pacakge-manager: 'yarn'
