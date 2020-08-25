@@ -15,19 +15,30 @@ jobs:
           with:
             node-version: ${{ matrix.node_version }}
 
-        - name: Install and run ncu
+        - name: Install ncu
           run: |
-            npm install npm-check-updates
-            npx ncu --jsonDeps 1>upgrade
+            npm install -D npm-check-updates
 
         - name: Report PR comment
           uses: actions/github-script@v3
           with:
             github-token: ${{secrets.GITHUB_TOKEN}}
             script: |
-              github.issues.createComment({
+              const ncu = require(`${process.env.GITHUB_WORKSPACE}/node_modules/npm-check-updates/lib/npm-check-updates.js`);
+              const upgraded = await ncu.run();
+
+              let bodyMessage;
+              if (Object.keys(upgraded).length > 0) {
+                bodyMessage = `⚠️ Check dependencies to upgrade: ${JSON.stringify(
+                  upgraded
+                )}`;
+              } else {
+                bodyMessage = '👍 All the latest modules 🙆‍♀️';
+              }
+
+              await github.issues.createComment({
                 issue_number: context.issue.number,
                 owner: context.repo.owner,
                 repo: context.repo.repo,
-                body: JSON.stringify(upgrade)
+                body: bodyMessage
               })
