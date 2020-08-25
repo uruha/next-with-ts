@@ -20,6 +20,7 @@ jobs:
             npm install npm-check-updates
             npx ncu 1>upgrade
             sed -i -z 's/\n/\\n/g' upgrade
+            cat upgrade
 
         - name: Report PR comment
           env:
@@ -27,6 +28,6 @@ jobs:
             URL: ${{ github.event.pull_request.comments_url }}
           run: |
             curl -X POST \
-              -H "Authorization: token ${GITHUB_TOKEN}" \
-              -d "{\"body\": \"$(cat upgrade)\"}" \
-              ${URL}
+                 -H "Authorization: token ${GITHUB_TOKEN}" \
+                 -d "{\"body\": \"$(cat upgrade)\"}" \
+                 ${URL}
