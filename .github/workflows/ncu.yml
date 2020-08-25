@@ -1,15 +1,31 @@
 name: ncu
-on:
-  [push, pull_request]
+on: [pull_request]
 jobs:
-  ncu_report:
-    runs-on: ubuntu-latest
-    name: npm-check-updates report
-    steps:
-      - uses: actions/checkout@v2
-      - uses: uruha/ncu-report-action@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        id: prComment
-      - run: echo "Comment URL - ${{ steps.prComment.outputs.commentUrl }}"
-        if: steps.prComment.outputs.commentUrl
+  ncu:
+      name: npm check updates
+      runs-on: macOS-latest
+      strategy:
+        matrix:
+          node_version: [12]
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v1
+        - name: Setup node ${{ matrix.node_version }}
+          uses: actions/setup-node@v1
+          with:
+            node-version: ${{ matrix.node_version }}
+
+        - name: Install and run ncu
+          run: |
+            npm install npm-check-updates
+            npx ncu 1>upgrade
+            sed -i -z 's/\n/\\n/g' upgrade
+
+        - name: Report PR comment
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            URL: ${{ github.event.pull_request.comments_url }}
+          run: |
+            curl -X POST \
+              -H "Authorization: token ${GITHUB_TOKEN}" \
+              -d "{\"body\": \"$(cat upgrade)\"}" \
+              ${URL}
