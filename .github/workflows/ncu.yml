@@ -22,6 +22,7 @@ jobs:
             sed -i -z 's/\n/\\n/g' upgrade
 
         - name: Report PR comment
+          env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             URL: ${{ github.event.pull_request.comments_url }}
           run: |
