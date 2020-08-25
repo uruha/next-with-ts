@@ -21,11 +21,13 @@ jobs:
             npx ncu --jsonDeps 1>upgrade
 
         - name: Report PR comment
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            URL: ${{ github.event.pull_request.comments_url }}
-          run: |
-            curl -X POST \
-                 -H "Authorization: token ${GITHUB_TOKEN}" \
-                 -d '{"body": "$(cat upgrade)"}' \
-                 ${URL}
+          uses: actions/github-script@v3
+          with:
+            github-token: ${{secrets.GITHUB_TOKEN}}
+            script: |
+              github.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: JSON.stringify(upgrade)
+              })
