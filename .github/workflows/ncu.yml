@@ -18,9 +18,7 @@ jobs:
         - name: Install and run ncu
           run: |
             npm install npm-check-updates
-            npx ncu 1>upgrade
-            sed -i -z 's/\n/\\n/g' upgrade
-            cat upgrade
+            npx ncu --jsonDeps 1>upgrade
 
         - name: Report PR comment
           env:
@@ -29,5 +27,5 @@ jobs:
           run: |
             curl -X POST \
                  -H "Authorization: token ${GITHUB_TOKEN}" \
-                 -d "{\"body\": \"$(cat upgrade)\"}" \
+                 -d '{"body": "$(cat upgrade)"}' \
                  ${URL}
