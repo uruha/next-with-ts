@@ -1,0 +1,51 @@
+name: ncu
+on: [pull_request]
+
+jobs:
+  ncu:
+      name: npm check updates
+      runs-on: macOS-latest
+      strategy:
+        matrix:
+          node_version: [12]
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v1
+        - name: Setup node ${{ matrix.node_version }}
+          uses: actions/setup-node@v1
+          with:
+            node-version: ${{ matrix.node_version }}
+
+        - name: Install ncu
+          run: |
+            npm install -D npm-check-updates
+
+        - name: Report PR comment
+          uses: actions/github-script@v3
+          with:
+            github-token: ${{secrets.GITHUB_TOKEN}}
+            script: |
+              const pr = context.payload.pull_request;
+              if (!pr) {
+                console.log('github.context.payload.pull_request not exist');
+                return;
+              }
+
+              const ncu = require(`${process.env.GITHUB_WORKSPACE}/node_modules/npm-check-updates/lib/npm-check-updates.js`);
+              const upgraded = await ncu.run();
+
+              let bodyMessage;
+              if (Object.keys(upgraded).length > 0) {
+                bodyMessage = `⚠️ Check dependencies to upgrade: ${JSON.stringify(
+                  upgraded
+                )}`;
+              } else {
+                bodyMessage = '👍 All the latest modules 🙆‍♀️';
+              }
+
+              await github.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: bodyMessage
+              })
