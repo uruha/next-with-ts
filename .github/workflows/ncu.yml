@@ -1,5 +1,7 @@
 name: ncu
-on: [pull_request]
+on: 
+  pull_request:
+    type: [created]
 
 jobs:
   ncu:
