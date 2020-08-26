@@ -1,5 +1,6 @@
 name: ncu
 on: [pull_request]
+
 jobs:
   ncu:
       name: npm check updates
@@ -24,6 +25,12 @@ jobs:
           with:
             github-token: ${{secrets.GITHUB_TOKEN}}
             script: |
+              const pr = context.payload.pull_request;
+              if (!pr) {
+                console.log('github.context.payload.pull_request not exist');
+                return;
+              }
+
               const ncu = require(`${process.env.GITHUB_WORKSPACE}/node_modules/npm-check-updates/lib/npm-check-updates.js`);
               const upgraded = await ncu.run();
 
