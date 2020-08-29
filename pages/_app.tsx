@@ -1,21 +1,17 @@
 import * as React from 'react';
-import App, { AppContext } from 'next/app';
+import App, { AppInitialProps, AppContext } from 'next/app';
 
 import { Dispatch } from 'redux';
-import withRedux from 'next-redux-wrapper';
-import { Provider } from 'react-redux';
-import makeStore from '~/store';
-import { StoreWithSaga } from '~/store';
+import { wrapper, StoreWithSaga } from '~/store';
 
 import { accountActions, counterActions } from '~/actions';
 import { getAccountState } from '~/sagas/selectors/account';
 
-interface CustomProps {
+interface AppInitialPropsWithStore extends AppInitialProps {
     store: StoreWithSaga;
-    isServer: boolean;
 }
 
-class CustomApp extends App<CustomProps> {
+class CustomApp extends App<AppInitialPropsWithStore> {
     static async getInitialProps({ Component, ctx }: AppContext) {
         let pageProps = {};
 
@@ -30,7 +26,7 @@ class CustomApp extends App<CustomProps> {
          */
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
-        await ctx.store.execSagaTask(ctx.isServer, (dispatch: Dispatch) => {
+        await ctx.store.execSagaTask(!!ctx.req, (dispatch: Dispatch) => {
             dispatch(counterActions.increment(1));
         });
 
@@ -42,26 +38,21 @@ class CustomApp extends App<CustomProps> {
          * @NOTE
          * this action is only client behavior.
          */
-        const { store } = this.props;
-        const { pathname } = this.props.router;
-
-        if (pathname !== '/signin') {
-            const account = getAccountState(store.getState());
-            if (!(account.data.email && account.data.nickname)) {
-                store.dispatch(accountActions.getAccount());
-            }
-        }
+        // const { store } = this.props;
+        // const { pathname } = this.props.router;
+        // if (pathname !== '/signin') {
+        //     const account = getAccountState(store.getState());
+        //     if (!(account.data.email && account.data.nickname)) {
+        //         store.dispatch(accountActions.getAccount());
+        //     }
+        // }
     }
 
     render() {
-        const { Component, pageProps, store } = this.props;
+        const { Component, pageProps } = this.props;
 
-        return (
-            <Provider store={store}>
-                <Component {...pageProps} />
-            </Provider>
-        );
+        return <Component {...pageProps} />;
     }
 }
 
-export default withRedux(makeStore)(CustomApp);
+export default wrapper.withRedux(CustomApp);
