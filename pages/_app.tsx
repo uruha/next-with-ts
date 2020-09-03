@@ -4,8 +4,7 @@ import App, { AppInitialProps, AppContext } from 'next/app';
 import { Dispatch } from 'redux';
 import { wrapper, StoreWithSaga } from '~/store';
 
-import { accountActions, counterActions } from '~/actions';
-import { getAccountState } from '~/sagas/selectors/account';
+import { counterActions } from '~/actions';
 
 interface AppInitialPropsWithStore extends AppInitialProps {
     store: StoreWithSaga;
@@ -31,21 +30,6 @@ class CustomApp extends App<AppInitialPropsWithStore> {
         });
 
         return { pageProps };
-    }
-
-    componentDidMount() {
-        /**
-         * @NOTE
-         * this action is only client behavior.
-         */
-        // const { store } = this.props;
-        // const { pathname } = this.props.router;
-        // if (pathname !== '/signin') {
-        //     const account = getAccountState(store.getState());
-        //     if (!(account.data.email && account.data.nickname)) {
-        //         store.dispatch(accountActions.getAccount());
-        //     }
-        // }
     }
 
     render() {

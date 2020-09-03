@@ -1,17 +1,29 @@
 import * as React from 'react';
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '~/reducers';
 import { AccountState } from '~/stateTypes';
+import { accountActions } from '~/actions';
 import Signout from '~/components/Signout';
 
 const Nav: React.FC = () => {
     const account = useSelector<RootState, AccountState>(
         state => state.account
     );
-
     const hasAccountData = Boolean(account.data.email && account.data.nickname);
+
+    const { pathname } = useRouter();
+    const dispatch = useDispatch();
+    useEffect(() => {
+        if (pathname !== '/signin') {
+            if (!hasAccountData) {
+                dispatch(accountActions.getAccount());
+            }
+        }
+    }, []);
 
     return (
         <nav>

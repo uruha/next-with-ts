@@ -1,5 +1,6 @@
 import { INCREMENT, DECREMENT, UPDATE_COUNT } from '~/constant';
 import { HYDRATE } from 'next-redux-wrapper';
+import { RootState } from '~/reducers';
 
 interface IncrementAction {
     type: typeof INCREMENT;
@@ -18,7 +19,7 @@ interface UpdateCountAction {
 
 interface HydrateCountAction {
     type: typeof HYDRATE;
-    payload: number;
+    payload: RootState;
 }
 
 export type CounterActionTypes =
