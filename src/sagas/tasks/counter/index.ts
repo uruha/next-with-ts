@@ -8,7 +8,11 @@ import { getCountState } from '~/sagas/selectors/counter';
 
 export function* handleRequestIncrementCount() {
     while (true) {
-        const { payload }: CounterActionTypes = yield take(INCREMENT);
+        const {
+            payload
+        }: Extract<CounterActionTypes, { type: typeof INCREMENT }> = yield take(
+            INCREMENT
+        );
         const counter: CountState = yield select(getCountState);
 
         const res = counter.count + payload;
@@ -18,7 +22,11 @@ export function* handleRequestIncrementCount() {
 
 export function* handleRequestDecrementCount() {
     while (true) {
-        const { payload }: CounterActionTypes = yield take(DECREMENT);
+        const {
+            payload
+        }: Extract<CounterActionTypes, { type: typeof DECREMENT }> = yield take(
+            DECREMENT
+        );
         const counter: CountState = yield select(getCountState);
 
         const res = counter.count - payload;
