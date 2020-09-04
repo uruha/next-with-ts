@@ -1,5 +1,6 @@
 import { createStore, applyMiddleware, Store, Middleware } from 'redux';
 import createSagaMiddleware, { Task, END } from 'redux-saga';
+import { MakeStore, Context, createWrapper } from 'next-redux-wrapper';
 import { createLogger } from 'redux-logger';
 import { rootReducer, RootState } from '~/reducers';
 import rootSaga from '~/sagas';
@@ -18,7 +19,7 @@ export interface StoreWithSaga extends Store<RootState> {
     ) => Promise<void>;
 }
 
-export default (initialState: RootState) => {
+const makeStore: MakeStore<RootState> = (ctx: Context) => {
     const sagaMiddleware = createSagaMiddleware();
     const middlewares: Middleware[] = [sagaMiddleware];
 
@@ -27,7 +28,6 @@ export default (initialState: RootState) => {
 
     const store = createStore(
         rootReducer,
-        initialState,
         applyMiddleware(...middlewares)
     ) as StoreWithSaga;
 
@@ -55,3 +55,5 @@ export default (initialState: RootState) => {
 
     return store;
 };
+
+export const wrapper = createWrapper<RootState>(makeStore, { debug: true });

@@ -1,8 +1,7 @@
 /* eslint-env jest */
 import * as React from 'react';
 import Nav from '~/components/Nav';
-
-import { renderWithProvider } from '~/lib/testing';
+import { render } from '@testing-library/react';
 
 describe('Navigation', () => {
     it('renders navigation list items collection', () => {
@@ -12,8 +11,11 @@ describe('Navigation', () => {
                 nickname: 'Geronimo'
             }
         };
+        const hasAccountData = true;
+        const { container } = render(
+            <Nav account={account} hasAccountData={hasAccountData} />
+        );
 
-        const { container } = renderWithProvider(<Nav />, account);
         const lists = container.querySelectorAll('.Nav-list li');
         expect(lists).toHaveLength(4);
     });
