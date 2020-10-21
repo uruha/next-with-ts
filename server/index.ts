@@ -1,6 +1,6 @@
 import Koa, { ParameterizedContext } from 'koa';
 import Router from '@koa/router';
-import KoaHelmet from 'koa-helmet';
+// import KoaHelmet from 'koa-helmet';
 import next from 'next';
 
 import Logger from 'bunyan';
@@ -68,7 +68,12 @@ app.prepare()
             await next();
         });
 
-        server.use(KoaHelmet());
+        /** @MEMO
+         * Too strict KoaHelmet security policy
+         * (next.js development mode gets stuck),
+         * so I have removed the use of the module once.
+         */
+        // server.use(KoaHelmet());
         server.use(router.routes());
         server.listen(port, () => {
             logger.info(`> Ready on localhost:${port}`);

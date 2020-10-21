@@ -19,7 +19,7 @@ export interface StoreWithSaga extends Store<RootState> {
     ) => Promise<void>;
 }
 
-const makeStore: MakeStore<RootState> = (ctx: Context) => {
+const makeStore: MakeStore<RootState> = (_ctx: Context) => {
     const sagaMiddleware = createSagaMiddleware();
     const middlewares: Middleware[] = [sagaMiddleware];
 
