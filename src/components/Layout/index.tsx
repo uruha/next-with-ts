@@ -26,6 +26,13 @@ const Layout: React.FC<LayoutProps> = ({
     const { pathname } = useRouter();
     const dispatch = useDispatch();
     useEffect(() => {
+        /** User Agent detection */
+        (async () => {
+            fetch('/api/ua')
+                .then(r => r.json())
+                .then(ua => console.log(ua));
+        })();
+
         if (pathname !== '/signin') {
             if (!hasAccountData) {
                 dispatch(accountActions.getAccount());
