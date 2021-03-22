@@ -20,7 +20,7 @@ jobs:
 
         - name: Install ncu
           run: |
-            npm install -D npm-check-updates
+            npm install npm-check-updates
 
         - name: Report PR comment
           uses: actions/github-script@v3
