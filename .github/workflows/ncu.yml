@@ -20,7 +20,7 @@ jobs:
 
         - name: Install ncu
           run: |
-            npm install npm-check-updates
+            npm install -D npm-check-updates
 
         - name: Report PR comment
           uses: actions/github-script@v3
@@ -33,7 +33,7 @@ jobs:
                 return;
               }
 
-              const ncu = require(`${process.env.GITHUB_WORKSPACE}/node_modules/npm-check-updates/lib/npm-check-updates.js`);
+              const ncu = require(`${process.env.GITHUB_WORKSPACE}/node_modules/npm-check-updates/lib/index.js`);
               const upgraded = await ncu.run();
 
               let bodyMessage;
