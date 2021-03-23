@@ -1,7 +1,7 @@
 name: ncu
 on: 
   pull_request:
-    type: [created]
+    type: [opened]
 
 jobs:
   ncu:
