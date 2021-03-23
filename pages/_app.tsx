@@ -1,5 +1,5 @@
 import * as React from 'react';
-import App, { AppInitialProps, AppContext } from 'next/app';
+import App, { AppContext } from 'next/app';
 
 import { Dispatch } from 'redux';
 import { wrapper, StoreWithSaga } from '~/store';
@@ -7,15 +7,11 @@ import { wrapper, StoreWithSaga } from '~/store';
 import { counterActions } from '~/actions';
 import { NextPageContext } from 'next';
 
-interface AppInitialPropsWithStore extends AppInitialProps {
-    store: StoreWithSaga;
-}
-
 interface NextPageContextWithStore extends NextPageContext {
     store: StoreWithSaga;
 }
 
-class CustomApp extends App<AppInitialPropsWithStore> {
+class CustomApp extends App {
     static async getInitialProps({ Component, ctx }: AppContext) {
         let pageProps = {};
 
