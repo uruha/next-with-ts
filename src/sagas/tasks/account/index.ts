@@ -5,7 +5,7 @@ import { Account } from '~/modelTypes';
 
 export function* runRequestGetAccount() {
     try {
-        const response = yield call(() => fetch('/api/account'));
+        const response: Response = yield call(() => fetch('/api/account'));
         if (response.status === 200) {
             const account: Account = yield response.json();
             yield put(accountActions.updateAccount(account));

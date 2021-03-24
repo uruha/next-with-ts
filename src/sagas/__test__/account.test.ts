@@ -28,6 +28,8 @@ describe('Account Tasks', () => {
      * return unknown error.
      */
     it('get account API call [success]', () => {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         return expectSaga(runRequestGetAccount)
             .provide([
                 [matchers.call.fn(() => ''), JSON.stringify(testingAccount)]
@@ -37,7 +39,8 @@ describe('Account Tasks', () => {
 
     it('get account API call [failed]', () => {
         const error = new Error('Expire is over.');
-
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         return expectSaga(runRequestGetAccount)
             .provide([[matchers.call.fn(() => ''), throwError(error)]])
             .run(false);

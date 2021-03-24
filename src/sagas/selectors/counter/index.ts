@@ -1,6 +1,6 @@
-import { GetAnyState } from 'types';
+import { SelectAnyState } from 'types';
 import { RootState } from '~/reducers';
 import { CountState } from '~/stateTypes';
 
-export const getCountState: GetAnyState<RootState, CountState> = state =>
+export const getCountState: SelectAnyState<RootState, CountState> = state =>
     state.counter;

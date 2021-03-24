@@ -1,6 +1,6 @@
-import { GetAnyState } from 'types';
+import { SelectAnyState } from 'types';
 import { RootState } from '~/reducers';
 import { AccountState } from '~/stateTypes';
 
-export const getAccountState: GetAnyState<RootState, AccountState> = state =>
+export const getAccountState: SelectAnyState<RootState, AccountState> = state =>
     state.account;
