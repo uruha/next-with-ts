@@ -1,4 +1,4 @@
-import Koa, { ParameterizedContext } from 'koa';
+import Koa, { Context, DefaultState } from 'koa';
 import Router from '@koa/router';
 import KoaHelmet from 'koa-helmet';
 import next from 'next';
@@ -27,6 +27,10 @@ const logOptions: Logger.LoggerOptions = {
     }
 };
 
+interface CtxWithLogger extends Context {
+    logger: Logger;
+}
+
 const port = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
@@ -37,27 +41,27 @@ const logger = Logger.createLogger(logOptions);
 app.prepare()
     .then(() => {
         const server = new Koa();
-        const router = new Router();
+        const router = new Router<DefaultState, CtxWithLogger>();
 
         server.use(async (ctx, next) => {
             ctx.logger = logger;
             await next();
         });
 
-        router.get('/health', async (ctx: ParameterizedContext<Logger>) => {
+        router.get('/health', async ctx => {
             await ctx.logger.info({ req: ctx.req }, 'HEALTH');
             ctx.status = 200;
             ctx.type = 'application/json';
             ctx.body = JSON.stringify({ uptime: process.uptime() });
         });
 
-        router.get(/.*/, async (ctx: ParameterizedContext<Logger>) => {
+        router.get(/.*/, async ctx => {
             await ctx.logger.info({ req: ctx.req }, 'REQUEST');
             await handle(ctx.req, ctx.res);
             ctx.respond = false;
         });
 
-        router.post(/.*/, async (ctx: ParameterizedContext<Logger>) => {
+        router.post(/.*/, async ctx => {
             await ctx.logger.info({ req: ctx.req }, 'REQUEST');
             await handle(ctx.req, ctx.res);
             ctx.respond = false;

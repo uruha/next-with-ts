@@ -1,7 +1,7 @@
 name: ncu
 on: 
   pull_request:
-    type: [created]
+    type: [opened]
 
 jobs:
   ncu:
@@ -33,7 +33,7 @@ jobs:
                 return;
               }
 
-              const ncu = require(`${process.env.GITHUB_WORKSPACE}/node_modules/npm-check-updates/lib/npm-check-updates.js`);
+              const ncu = require(`${process.env.GITHUB_WORKSPACE}/node_modules/npm-check-updates/lib/index.js`);
               const upgraded = await ncu.run();
 
               let bodyMessage;
