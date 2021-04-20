@@ -13,6 +13,7 @@
         "type:check": "tsc",
         "lint:check": "eslint . --ext .ts,.tsx",
         "lint:fmt": "eslint . --fix --ext .ts,.tsx",
+        "format": "prettier '{pages,server,src}/**/*.{js,ts,tsx}' --write",
         "test": "jest",
         "gen": "hygen generate"
     },

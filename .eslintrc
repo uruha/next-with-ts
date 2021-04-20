@@ -6,8 +6,7 @@
     },
     "plugins": [
         "@typescript-eslint",
-        "react",
-        "prettier"
+        "react"
     ],
     "env": {
         "es6": true,
@@ -16,11 +15,9 @@
     "extends": [
         "plugin:@typescript-eslint/recommended",
         "plugin:react/recommended",
-        "prettier",
-        "prettier/@typescript-eslint"
+        "prettier"
     ],
     "rules": {
-        "prettier/prettier": "error",
         "@typescript-eslint/explicit-function-return-type": [
             "off",
             { "allowExpressions": true }
