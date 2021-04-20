@@ -19,8 +19,8 @@ module.exports = {
     },
     globals: {
         'ts-jest': {
-            'babelConfig': true,
-            'tsConfig': 'jest.tsconfig.json'
+            babelConfig: true,
+            tsconfig: 'jest.tsconfig.json'
         }
     },
     automock: false,
