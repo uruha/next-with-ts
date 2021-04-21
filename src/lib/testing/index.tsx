@@ -23,20 +23,22 @@ export const withMockedRouter = (
     router: Partial<NextRouter> = {},
     children: React.ReactElement
 ): React.ReactElement => {
-    const mockedRouter = {
+    const mockedRouter: NextRouter = {
         route: '',
         pathname: '',
         query: {},
         asPath: '',
         basePath: '',
+        isLocaleDomain: true,
         push: async () => true,
         replace: async () => true,
         reload: () => null,
         back: () => null,
         prefetch: async () => undefined,
         beforePopState: () => null,
-        isSsr: true,
         isFallback: true,
+        isReady: true,
+        isPreview: true,
         events: {
             on: () => null,
             off: () => null,
